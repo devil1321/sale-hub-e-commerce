@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Nav = () => {
+interface Nav{
+    
+}
+
+const Nav:React.FC<Nav> = () => {
     return (
         <div>
             

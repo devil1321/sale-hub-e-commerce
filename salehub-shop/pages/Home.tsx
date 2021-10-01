@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Home = () => {
+interface Home{
+
+} 
+
+const Home:React.FC<Home> = () => {
     return (
         <div>
             
