@@ -1,0 +1,54 @@
+.nav {
+    box-sizing: border-box;
+    min-width: 100vw;
+    padding: 0px $p-lg;
+    @include createFlex(row, space-between, center, null);
+    &__navbar {
+        list-style-type: none;
+        padding: $p-zero;
+        margin: $m-zero;
+        min-width: 35%;
+        @include createFlex(row, space-between, center, null);
+    }
+    &__item {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: -7px;
+            left: 0px;
+            width: 0%;
+            border-bottom: 2px solid $black;
+            transition: 0.5s ease-in-out;
+        }
+        &:hover {
+            &:before {
+                width: 100%;
+            }
+        }
+    }
+    &__title {
+        font-size: $font-nav;
+    }
+    &__menu {
+        margin: 0px;
+        padding: 0px;
+        min-width: 35%;
+        @include createFlex(row, flex-end, center, null);
+        &-item {
+            margin-left: 20px;
+            @include createFlex(row, flex-start, center, null);
+            svg {
+                margin-right: 10px;
+            }
+        }
+    }
+    &__badge {
+        background-color: $badge;
+        padding: $p-xs $p-sm;
+        margin: $m-xs;
+        border-radius: 100%;
+    }
+}

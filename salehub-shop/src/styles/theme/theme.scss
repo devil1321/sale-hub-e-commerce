@@ -1,0 +1,16 @@
+/*---------------------MAIN---------------------------*/
+
+@import '../normalize.css';
+@import '../fonts';
+@import '../variables';
+@import '../animations';
+@import '../mixins';
+@import '../global';
+
+/*---------------------COMPONENTS----------------------*/
+
+@import './components/nav';
+
+/*---------------------PAGES---------------------------*/
+
+@import './pages/electronics-homepage';
