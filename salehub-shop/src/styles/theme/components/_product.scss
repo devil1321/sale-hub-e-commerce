@@ -1,0 +1,75 @@
+.product {
+    margin: $m-med-sm;
+    width: calc(20% - 20px);
+    &__image {
+        height: 200px;
+        width: 200px;
+        overflow: hidden;
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+        img {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+    }
+    &__footer {
+        @include createFlex(row, space-between, center, null);
+    }
+    &__price {
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        width: 80%;
+        min-height: 50px;
+        @include createFlex(row, center, center, null);
+        position: relative;
+        top: 0px;
+        left: 0px;
+        transition: background 500ms ease;
+        &:hover {
+            background-color: $black;
+            &:after {
+                left: 83%;
+            }
+            &:before {
+                right: 83%;
+            }
+        }
+        &:after {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            content: '';
+            border-top: 4px solid red;
+            width: 20px;
+            transition: all 1s ease-in-out;
+        }
+        &:before {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            content: '';
+            border-bottom: 4px solid red;
+            width: 20px;
+            transition: all 1s ease-in-out;
+        }
+    }
+    &__badge {
+        font-size: pxToRem(14);
+        text-align: center;
+        padding: $p-xs $p-sm;
+        margin: $m-zero $m-xs;
+        border-radius: 25px;
+        &.yellow {
+            background-color: yellow;
+            color: $black;
+        }
+        &.red {
+            background-color: red;
+            color: white;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { GET_PRODUCTS, GET_PRODUCT } from '../types'
 
-const getProducts = (category) => dispatch => {
+const getProducts = () => dispatch => {
     axios.get(`https://fakestoreapi.com/products`)
         .then(res => {
             dispatch({

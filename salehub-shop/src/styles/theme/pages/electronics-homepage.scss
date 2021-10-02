@@ -1,0 +1,11 @@
+.home {
+    &__title {
+        font-size: pxToRem(45);
+        color: red;
+        text-align: center;
+        text-decoration: underline;
+    }
+    &__products {
+        @include createFlex(row, center, center, wrap)
+    }
+}

@@ -2,6 +2,8 @@
     box-sizing: border-box;
     min-width: 100vw;
     padding: 0px $p-lg;
+    background-color: #f1f1f1;
+    box-shadow: 0px 10px 10px rgb(243, 243, 243);
     @include createFlex(row, space-between, center, null);
     &__navbar {
         list-style-type: none;
@@ -14,6 +16,7 @@
         position: relative;
         top: 0px;
         left: 0px;
+        margin-right: $m-sm;
         &:before {
             content: '';
             position: absolute;

@@ -1,6 +1,7 @@
 import React,{ useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { productsActions } from '../APIController/actions/productsActions'
+import Product from '../components/Product'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom' 
 
@@ -15,14 +16,17 @@ interface Electronics{
 const Homepage:React.FC<Electronics> = (props) => {
     const { getProducts } = props
     const { product, products } = props.products
-    const strignify = JSON.stringify(products)
+
     useEffect(()=>{
         getProducts()        
     },[])
 
     return (
         <div className="home">
-            {strignify}
+            <h2 className="home__title">Products</h2>
+            <div className="home__products">
+                {products.map((product,index) => <Product key={index} {...product} />)}
+            </div>
         </div>
     )
 }
