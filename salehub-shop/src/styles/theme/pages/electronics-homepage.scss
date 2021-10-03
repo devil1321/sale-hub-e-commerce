@@ -5,6 +5,10 @@
         text-align: center;
         text-decoration: underline;
     }
+    &__main {
+        position: relative;
+        top: 400px;
+    }
     &__products {
         @include createFlex(row, center, center, wrap)
     }

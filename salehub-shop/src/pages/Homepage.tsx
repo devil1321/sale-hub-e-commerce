@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { productsActions } from '../APIController/actions/productsActions'
 import Product from '../components/Product'
+import Carousel from '../components/Carousel'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom' 
 
@@ -23,6 +24,7 @@ const Homepage:React.FC<Electronics> = (props) => {
 
     return (
         <div className="home">
+            <Carousel />
             <h2 className="home__title">Products</h2>
             <div className="home__products">
                 {products.map((product,index) => <Product key={index} {...product} />)}
