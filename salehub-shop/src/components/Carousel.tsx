@@ -104,7 +104,7 @@ const Carousel = () => {
                     <h6>The Hotlist of</h6>
                     <h2>Summer</h2>
                     <h3>Perfect</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officiis.</p>?s
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officiis.</p>
                     <button>Shop Collection</button>
                 </div>
             </div>}

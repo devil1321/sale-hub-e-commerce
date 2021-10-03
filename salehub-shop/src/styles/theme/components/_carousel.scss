@@ -1,5 +1,6 @@
 .carousel {
-    height: 100vh;
+    overflow: hidden;
+    height: 90vh;
     margin-bottom: 100px;
     &__slide-1,
     &__slide-2,
@@ -14,7 +15,7 @@
         &-text {
             overflow: hidden;
             position: absolute;
-            bottom: 50px;
+            bottom: 150px;
             left: 50px;
             h2,
             h3,
