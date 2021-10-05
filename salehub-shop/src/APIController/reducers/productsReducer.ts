@@ -22,7 +22,7 @@ export default (state = initData, action:Actions) => {
         case ProductsActions.GET_PRODUCT:
             return {
                 ...state,
-                products: action.payload
+                product: action.payload
             }
         default:
             return {

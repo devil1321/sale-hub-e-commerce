@@ -18,7 +18,9 @@ const Nav:React.FC<Cart> = (props) => {
                 <Link to="/men-clothing" ><li className="nav__item">Men`s clothing</li></Link>
                 <Link to="/woman-clothing" ><li className="nav__item">Women`s Clothing</li></Link>
             </ul>
-            <h1 className="nav__title">SaleHub</h1>
+            <Link to="/" >
+                <h1 className="nav__title">SaleHub</h1>
+            </Link>
             <ul className="nav__menu">
                 <li className="nav__menu-item">
                     <FontAwesomeIcon icon={faSearch} />

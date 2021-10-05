@@ -14,7 +14,7 @@ const getProducts = () => (dispatch:Dispatch<Actions>) => {
 }
 
 const getProduct = (id:number) =>(dispatch:Dispatch<Actions>) =>{
-    axios.get(`https://fakestoreapi.com/products/${id}`)
+    axios.get(`https://fakestoreapi.com/products/`+ id)
     .then(res => {
         dispatch({
             type: ProductsActions.GET_PRODUCT,
