@@ -1,23 +1,12 @@
 import React from 'react'
+import { Product as ProductModel }  from '../APIController/interfaces'
 
-interface ProductProps{
-    id:number;
-    title:string;
-    price:number;
-    description:string;
-    category:string;
-    image:string;
-    rating:{
-        rate:number;
-        count:number;
-    }
-}
 
-const Product:React.FC<ProductProps|any> = ({id,title,price,description,category,image,rating}) => {
+const Product:React.FC<ProductModel|any> = ({id,title,price,description,category,image,rating}) => {
     return (
         <div className="product">
             <div className="product__image">
-                <img src={image} alt="image" />
+                <img src={image} alt="product-image" />
             </div>
             <h3>{title}</h3>
             <div className="product__footer">

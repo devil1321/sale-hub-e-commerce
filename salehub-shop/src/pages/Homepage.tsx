@@ -1,22 +1,16 @@
-import React,{ useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { productsActions } from '../APIController/actions/productsActions'
+import React,{ useEffect } from 'react'
+import { productsActions } from '../APIController/action-creators/productsActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Product from '../components/Product'
 import Carousel from '../components/Carousel'
-import axios from 'axios'
-import { useLocation } from 'react-router-dom' 
+import { State } from '../APIController/reducers'
+const Homepage:React.FC = () => {
 
-interface Electronics{
-    products:{
-        products:string[];
-        product:Object;
-    }
-    getProducts:any;
-} 
-
-const Homepage:React.FC<Electronics> = (props) => {
-    const { getProducts } = props
-    const { product, products } = props.products
+    const products:any  = useSelector((state:State) => state.products)
+    const productsArr = products.products
+    const dispatch = useDispatch()
+    const { getProducts } = bindActionCreators(productsActions,dispatch)
 
     useEffect(()=>{
         getProducts()        
@@ -27,14 +21,12 @@ const Homepage:React.FC<Electronics> = (props) => {
             <Carousel />
             <h2 className="home__title">Products</h2>
             <div className="home__products">
-                {products.map((product,index) => <Product key={index} {...product} />)}
+                {productsArr.map((product:Object,index:number) => <Product key={index} {...product} />)}
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state:any) => ({
-    ...state
-})
 
-export default connect(mapStateToProps,productsActions)(Homepage)
+
+export default Homepage
