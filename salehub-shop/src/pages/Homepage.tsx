@@ -13,6 +13,7 @@ const Homepage:React.FC = () => {
     const { getProducts } = bindActionCreators(productsActions,dispatch)
 
     useEffect(()=>{
+        window.scrollTo(0,0)
         getProducts()        
     },[])
 

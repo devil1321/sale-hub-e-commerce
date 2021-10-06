@@ -46,3 +46,19 @@ $breakpoints-down:("small":"39.9375em", "sm-med":"33.75em", "medium-sm":"63em", 
         flex-wrap: $fw;
     }
 }
+
+// components
+@mixin btn() {
+    button {
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 10px 30px;
+        background-color: white;
+        color: black;
+        border: 0px;
+        &:active {
+            border: 0px;
+            outline: none;
+        }
+    }
+}

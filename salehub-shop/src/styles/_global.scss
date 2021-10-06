@@ -4,3 +4,18 @@ a {
 }
 
 .container {}
+
+.italic {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 150px inset black;
+}

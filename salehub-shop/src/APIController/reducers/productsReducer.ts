@@ -1,15 +1,29 @@
+import { title } from "process"
 import { ProductsActions } from "../action-types"
 import { Actions } from '../actions'
 import { Product } from '../interfaces'
 
-interface InitData {
+
+
+type InitData = {
     products:Product[]
-    product:Object
+    product:Product
 }
 
 const initData:InitData = {
     products: [],
-    product: {}
+    product:{
+        id:0,
+        title:'',
+        price:0,
+        description:'',
+        category:'',
+        image:'',
+        rating:{
+            rate:0,
+            count:0
+        }
+    }
 }
 
 export default (state = initData, action:Actions) => {
@@ -19,7 +33,19 @@ export default (state = initData, action:Actions) => {
                 ...state,
                 products: action.payload
             }
+        case ProductsActions.GET_PRODUCTS:
+            return {
+                ...state,
+                product: action.payload
+            }
+         
         case ProductsActions.GET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
+            }
+     
+        case ProductsActions.RESET_PRODUCT:
             return {
                 ...state,
                 product: action.payload

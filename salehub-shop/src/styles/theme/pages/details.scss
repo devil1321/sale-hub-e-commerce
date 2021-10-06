@@ -1,0 +1,155 @@
+        .details {
+            min-height: 100vh;
+            &__hero {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                overflow: hidden;
+                height: 500px;
+            }
+            &__hero-text {
+                width: 40%;
+                height: 100%;
+                padding: 100px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                color: white;
+                overflow: hidden;
+                h1,
+                h3 {
+                    margin: 10px 0px 20px;
+                }
+                h1 {
+                    font-size: pxToRem(60)
+                }
+                h3 {
+                    font-size: pxToRem(30)
+                }
+                @include btn();
+            }
+            &__content {
+                width: 90%;
+                margin: 0 auto;
+                position: relative;
+                top: -100px;
+                left: 0px;
+                padding: 100px $p-lg;
+                @include createFlex(row, space-between, center, null);
+                background-color: white;
+            }
+            &__image {
+                width: 45%;
+                img {
+                    width: 100%;
+                }
+            }
+            &__text {
+                width: 45%
+            }
+            &__price {
+                @include createFlex(row, flex-start, center, null);
+                svg {
+                    color: yellow;
+                }
+            }
+            &__icons {
+                margin-left: 10px;
+            }
+            &__sizes {
+                @include createFlex(row, flex-start, center, null);
+            }
+            &__sizes-wrapper {
+                margin-left: 10px;
+                @include createFlex(row, flex-start, center, null);
+            }
+            &__size-btn {
+                cursor: pointer;
+                font-weight: 500;
+                margin: 0px 2px;
+                padding: 5px 10px;
+                box-shadow: 0px 0px 1px black;
+                transition: all 0.3s ease-in-out;
+                &:hover,
+                &.active {
+                    color: white;
+                    background-color: black;
+                }
+            }
+            &__notes-field {
+                h3 {
+                    margin: 2px 0px;
+                }
+                textarea {
+                    padding: 8px;
+                    border: 0px;
+                    box-shadow: 0px 0px 1px black;
+                    &::placeholder {
+                        font-style: italic;
+                    }
+                    &:hover {
+                        box-shadow: 0px 0px 2px blue;
+                    }
+                    &:active,
+                    &:focus {
+                        outline: none;
+                        border: 0px;
+                        box-shadow: 0px 0px 2px blue;
+                    }
+                }
+            }
+            &__add-to-bag {
+                margin: 5px 0px;
+                @include createFlex(row, space-between, center, null);
+                button {
+                    cursor: pointer;
+                    padding: 11px 20px;
+                    min-width: 68%;
+                    border: 0px;
+                    font-weight: bold;
+                    transition: all 0.3s ease-in-out;
+                    &:hover {
+                        color: white;
+                        background-color: greenyellow;
+                    }
+                    &:active,
+                    &:focus {}
+                }
+            }
+            &__quantity {
+                width: 30%;
+                @include createFlex(row, flex-start, center, null);
+                div:nth-of-type(2) {
+                    width: 70%;
+                }
+                div {
+                    text-align: center;
+                    width: 15%;
+                    cursor: pointer;
+                    font-weight: 500;
+                    margin: 0px;
+                    padding: 10px;
+                    border: 1px solid $gray;
+                    transition: all 0.3s ease-in-out;
+                    &:hover,
+                    &.active {
+                        color: white;
+                        background-color: black;
+                    }
+                }
+            }
+            &__suspense {
+                @include createFlex(column, center, center, null);
+                h2 {
+                    width: 100%;
+                    text-align: center;
+                    margin: 100px 0px 20px;
+                    font-size: pxToRem(40);
+                }
+                @include btn();
+                button {
+                    background-color: green;
+                    margin: 0px 0px 100px;
+                }
+            }
+        }

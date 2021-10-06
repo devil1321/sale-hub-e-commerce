@@ -39,18 +39,7 @@
                 color: white;
                 font-weight: bold;
             }
-            button {
-                text-transform: uppercase;
-                font-weight: bold;
-                padding: 10px 30px;
-                background-color: white;
-                color: black;
-                border: 0px;
-                &:active {
-                    border: 0px;
-                    outline: none;
-                }
-            }
+            @include btn();
         }
     }
 }

@@ -6,20 +6,23 @@ import RouteWithLayout from './templates/RouteWithLayout'
 /* ------------------------PAGES------------------------- */
 
 import Homepage from './pages/Homepage'
-import DetailsElectronics from './pages/details/DetailsElectronics'
-import DetailsJewellery from './pages/details/DetailsElectronics'
-import DetailsWomensClothing from './pages/details/DetailsElectronics'
-import DetailsMensClothing from './pages/details/DetailsElectronics'
+import Details from './pages/details/Details'
 
+type Routes = {
+  electronics:string,
+  jewelery:string,
+  men:string,
+  woman:string
+}
 function App() {
   return (
     <div className="App">
       <Switch>
-        <RouteWithLayout exact path="/" component={Homepage} />
-        <RouteWithLayout exact path="/details-electronics/:id" component={DetailsElectronics} />
-        <RouteWithLayout exact path="/details-jewelery/:id" component={DetailsJewellery} />
-        <RouteWithLayout exact path="/details-men's clothing/:id" component={DetailsWomensClothing} />
-        <RouteWithLayout exact path="/details-women's clothing/:id" component={DetailsMensClothing} />
+          <RouteWithLayout exact path="/" component={Homepage} />
+        <RouteWithLayout exact path={'/details-electronics/:id'} component={Details} />
+        <RouteWithLayout exact path={'/details-jewelery/:id'} component={Details} />
+        <RouteWithLayout exact path={'/details-men\'s clothing/:id'} component={Details} />
+        <RouteWithLayout exact path={'/details-women\'s clothing/:id'} component={Details} />
       </Switch>
     </div>
   );
