@@ -144,6 +144,7 @@ const DetailsElectronics = () => {
                                      <div>+</div>
                                  </div>
                                 <button>Add To Bag</button>
+                                <button>Continue Shopping</button>
                             </div>
                         </div>
                     </form>
