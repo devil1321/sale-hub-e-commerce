@@ -6,7 +6,7 @@ import RouteWithLayout from './templates/RouteWithLayout'
 /* ------------------------PAGES------------------------- */
 
 import Homepage from './pages/Homepage'
-import Details from './pages/details/Details'
+import Details from './pages/Details'
 
 type Routes = {
   electronics:string,

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { productsActions } from '../../APIController/action-creators/productsActions'
+import { productsActions } from '../APIController/action-creators/productsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { State } from '../../APIController/reducers'
+import { State } from '../APIController/reducers'
 // to fix type
-import { Product as ProductModel }  from '../../APIController/interfaces'
+import { Product as ProductModel }  from '../APIController/interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 const DetailsElectronics = () => {
@@ -18,7 +18,7 @@ const DetailsElectronics = () => {
 
     const animateHero = () =>{  
         //   gsap.registerPlugin(ScrollTrigger);
-        gsap.fromTo('.details__hero-text h1',{y:-400,opacity:0},{y:0,opacity:1,rotateX:720,duration:2, 
+        gsap.fromTo('.details__hero-text h1',{y:-400,opacity:0},{y:0,opacity:1,rotateX:720,duration:1.5, 
         //     scrollTrigger: {
         //     trigger: '.details__hero-text',
         //     start:'-=100px',
@@ -26,9 +26,51 @@ const DetailsElectronics = () => {
         //     markers: true
         //   }
         })
-        gsap.fromTo('.details__hero-text h3',{x:500,transform:"skewX(-220deg)"},{transform:"skewX(0deg)",x:0,duration:2})
-        gsap.fromTo('.details__hero-text button',{y:500},{y:0,duration:2})
+        gsap.fromTo('.details__hero-text h3',{x:500,transform:"skewX(-220deg)"},{transform:"skewX(0deg)",x:0,duration:1.5})
+        gsap.fromTo('.details__hero-text button',{y:500},{y:0,duration:1.5})
     }
+    const handleTabs = (index) =>{
+        let tabs = document.querySelectorAll('.details__tab')
+        let btns = document.querySelectorAll('.details__tabs-btn')
+        btns.forEach(btn => btn.classList.remove('active'))
+        btns[index].classList.add('active')
+        tabs.forEach(tab=> tab.classList.remove('active'))
+        tabs[index].classList.add('active')
+    }
+
+    type Review = {
+        review:string,
+        name:string,
+        rating:number
+    }
+
+    const [fakeReviews,setFakeReviews] = useState<Review>([
+        {
+            review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
+            name:'John Doe',
+            rating:5
+        },
+        {
+            review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
+            name:'Mike Doe',
+            rating:2.5
+        },
+        {
+            review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
+            name:'Alicia Doe',
+            rating:3.5
+        },
+        {
+            review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
+            name:'Janet Doe',
+            rating:5
+        },
+        {
+            review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
+            name:'Steve Doe',
+            rating:1.5
+        }
+    ])
 
     useEffect(()=>{
         window.scrollTo(0,0)
@@ -104,16 +146,15 @@ const DetailsElectronics = () => {
                                 <button>Add To Bag</button>
                             </div>
                         </div>
-                        <button>Buy It Now</button>
                     </form>
-                    <img src="/payment.png" alt="" />
+                    <img className="details__payment" src="/payment.png" alt="" />
                 </div>
                     </div>
                 <div className="details__tabs">
                 <ul className="details__tabs-nav">
-                    <li className="details__tabs-btn">Description</li>
-                    <li className="details__tabs-btn">Deliverty Policy</li>
-                    <li className="details__tabs-btn">Customer Reviews</li>
+                    <li className="details__tabs-btn active" data-index={0} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Description</li>
+                    <li className="details__tabs-btn" data-index={1} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Deliverty Policy</li>
+                    <li className="details__tabs-btn" data-index={2} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Customer Reviews</li>
                 </ul>
                 <div className="details__tab active">{description}</div>
                 <div className="details__tab">
@@ -122,7 +163,21 @@ const DetailsElectronics = () => {
                     <p>Curabitur egestas suscipit odio. Nam vitae aliquam dui in laoreet elit. In posuere augue id velit placerat, vitae porttitor leo aliquet. Aenean non ligula sed lorem eleifend aliquam. Morbi posuere faucibus viverra. Proin ullamcorper, lorem lacinia cursus finibus.</p>
                 </div>
                 <div className="details__tab">
-                    {/* review components */}
+                    {fakeReviews.map(review=>(
+                        <div className="details__review">
+                            <div className="details__review-heading">
+                                <h3>{review.name}</h3>
+                                {review.rating > 0.5 ? <FontAwesomeIcon icon={faStar} /> : null}
+                                {review.rating > 1.5 ? <FontAwesomeIcon icon={faStar} /> : null}
+                                {review.rating > 2.5 ? <FontAwesomeIcon icon={faStar} /> : null}
+                                {review.rating > 3.5 ? <FontAwesomeIcon icon={faStar} /> : null}
+                                {review.rating > 4.5 ? <FontAwesomeIcon icon={faStar} /> : null}
+                            </div>
+                            <div className="details__comment">
+                                {review.review}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
             </React.Fragment>
