@@ -29,6 +29,8 @@ const DetailsElectronics = () => {
         gsap.fromTo('.details__hero-text h3',{x:500,transform:"skewX(-220deg)"},{transform:"skewX(0deg)",x:0,duration:1.5})
         gsap.fromTo('.details__hero-text button',{y:500},{y:0,duration:1.5})
     }
+
+
     const handleTabs = (index) =>{
         let tabs = document.querySelectorAll('.details__tab')
         let btns = document.querySelectorAll('.details__tabs-btn')
@@ -37,7 +39,6 @@ const DetailsElectronics = () => {
         tabs.forEach(tab=> tab.classList.remove('active'))
         tabs[index].classList.add('active')
     }
-
     type Review = {
         review:string,
         name:string,
@@ -150,7 +151,7 @@ const DetailsElectronics = () => {
                     </form>
                     <img className="details__payment" src="/payment.png" alt="" />
                 </div>
-                    </div>
+                </div>
                 <div className="details__tabs">
                 <ul className="details__tabs-nav">
                     <li className="details__tabs-btn active" data-index={0} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Description</li>

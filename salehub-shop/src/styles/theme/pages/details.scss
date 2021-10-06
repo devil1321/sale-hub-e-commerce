@@ -1,5 +1,8 @@
         .details {
             min-height: 100vh;
+            h3 {
+                text-transform: capitalize;
+            }
             &__hero {
                 position: relative;
                 top: 0px;
@@ -34,7 +37,7 @@
                 position: relative;
                 top: -100px;
                 left: 0px;
-                padding: 100px $p-lg;
+                padding: 100px $p-lg 0px;
                 @include createFlex(row, space-between, center, null);
                 background-color: white;
             }
@@ -207,8 +210,14 @@
                 }
                 @include btn();
                 button {
-                    background-color: green;
+                    cursor: pointer;
+                    color: white;
+                    background-color: greenyellow;
                     margin: 0px 0px 100px;
+                    transition: all 0.3s ease-in-out;
+                    &:hover {
+                        background-color: green;
+                    }
                 }
             }
         }
