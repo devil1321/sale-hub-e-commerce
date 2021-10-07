@@ -31,7 +31,7 @@ const DetailsElectronics = () => {
     }
 
 
-    const handleTabs = (index) =>{
+    const handleTabs = (index:number):void =>{
         let tabs = document.querySelectorAll('.details__tab')
         let btns = document.querySelectorAll('.details__tabs-btn')
         btns.forEach(btn => btn.classList.remove('active'))
@@ -75,7 +75,7 @@ const DetailsElectronics = () => {
 
     useEffect(()=>{
         window.scrollTo(0,0)
-        animateHero()
+        animateHero()   
     },[product])
     return (
         <div className="details">
@@ -95,6 +95,9 @@ const DetailsElectronics = () => {
            ? <React.Fragment>
                 <div className="details__content">
                     <div className="details__image">
+                        <div className="details__lens">
+
+                        </div>
                         <img src={image} alt="" />
                     </div>
                     <div className="details__text">

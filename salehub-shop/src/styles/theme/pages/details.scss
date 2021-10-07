@@ -41,7 +41,18 @@
                 @include createFlex(row, space-between, center, null);
                 background-color: white;
             }
+            &__lens {
+                position: relative;
+                top: 0px;
+                left: 0px;
+                height: 150px;
+                width: 150px;
+                border-radius: 100%;
+                border: 1px solid black;
+                background-position: center center;
+            }
             &__image {
+                border: 1px solid black;
                 width: 45%;
                 img {
                     width: 100%;
