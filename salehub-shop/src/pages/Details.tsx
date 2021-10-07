@@ -10,42 +10,21 @@ import { State } from '../APIController/reducers'
 import { Product as ProductModel }  from '../APIController/interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-const DetailsElectronics = () => {
-    const dispatch = useDispatch()
-    const { getProduct } = bindActionCreators(productsActions,dispatch)
-    const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
-    const { id, title, price, description, category, image, rating } = product
-
-    const animateHero = () =>{  
-        //   gsap.registerPlugin(ScrollTrigger);
-        gsap.fromTo('.details__hero-text h1',{y:-400,opacity:0},{y:0,opacity:1,rotateX:720,duration:1.5, 
-        //     scrollTrigger: {
-        //     trigger: '.details__hero-text',
-        //     start:'-=100px',
-        //     end:'+=300px',
-        //     markers: true
-        //   }
-        })
-        gsap.fromTo('.details__hero-text h3',{x:500,transform:"skewX(-220deg)"},{transform:"skewX(0deg)",x:0,duration:1.5})
-        gsap.fromTo('.details__hero-text button',{y:500},{y:0,duration:1.5})
-    }
 
 
-    const handleTabs = (index:number):void =>{
-        let tabs = document.querySelectorAll('.details__tab')
-        let btns = document.querySelectorAll('.details__tabs-btn')
-        btns.forEach(btn => btn.classList.remove('active'))
-        btns[index].classList.add('active')
-        tabs.forEach(tab=> tab.classList.remove('active'))
-        tabs[index].classList.add('active')
-    }
+const Details = () => {
+    
     type Review = {
         review:string,
         name:string,
         rating:number
     }
-
-    const [fakeReviews,setFakeReviews] = useState<Review>([
+    
+    const dispatch = useDispatch()
+    const { getProduct } = bindActionCreators(productsActions,dispatch)
+    const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
+    const { id, title, price, description, category, image, rating } = product
+    const [fakeReviews,setFakeReviews] = useState<Review[]>([
         {
             review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
             name:'John Doe',
@@ -73,10 +52,35 @@ const DetailsElectronics = () => {
         }
     ])
 
+    const hanleAnimateHero = () =>{  
+        //   gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo('.details__hero-text h1',{y:-400,opacity:0},{y:0,opacity:1,rotateX:720,duration:1.5, 
+        //     scrollTrigger: {
+        //     trigger: '.details__hero-text',
+        //     start:'-=100px',
+        //     end:'+=300px',
+        //     markers: true
+        //   }
+        })
+        gsap.fromTo('.details__hero-text h3',{x:500,transform:"skewX(-220deg)"},{transform:"skewX(0deg)",x:0,duration:1.5})
+        gsap.fromTo('.details__hero-text button',{y:500},{y:0,duration:1.5})
+    }
+
+    const handleTabs = (index:any):void =>{
+        let tabs = document.querySelectorAll('.details__tab')!
+        let btns = document.querySelectorAll('.details__tabs-btn')!
+        btns.forEach(btn => btn.classList.remove('active'))
+        btns[index].classList.add('active')
+        tabs.forEach(tab=> tab.classList.remove('active'))
+        tabs[index].classList.add('acti ve')
+    }
+    
+  
     useEffect(()=>{
         window.scrollTo(0,0)
-        animateHero()   
+        hanleAnimateHero()   
     },[product])
+
     return (
         <div className="details">
             <div className="details__hero">
@@ -91,14 +95,12 @@ const DetailsElectronics = () => {
                 </div>
             </div>
         <React.Fragment>
+      
         {product.id !== 0 
            ? <React.Fragment>
                 <div className="details__content">
                     <div className="details__image">
-                        <div className="details__lens">
-
-                        </div>
-                        <img src={image} alt="" />
+                        <img src={image} alt="modal" />
                     </div>
                     <div className="details__text">
                     <h1 className="details__text-heading">{title}</h1>
@@ -157,9 +159,9 @@ const DetailsElectronics = () => {
                 </div>
                 <div className="details__tabs">
                 <ul className="details__tabs-nav">
-                    <li className="details__tabs-btn active" data-index={0} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Description</li>
-                    <li className="details__tabs-btn" data-index={1} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Deliverty Policy</li>
-                    <li className="details__tabs-btn" data-index={2} onClick={(e)=>{handleTabs(e.target.dataset.index)}}>Customer Reviews</li>
+                    <li className="details__tabs-btn active" onClick={(e)=>{handleTabs(0)}}>Description</li>
+                    <li className="details__tabs-btn"  onClick={(e)=>{handleTabs(1)}}>Deliverty Policy</li>
+                    <li className="details__tabs-btn" onClick={(e)=>{handleTabs(2)}}>Customer Reviews</li>
                 </ul>
                 <div className="details__tab active">{description}</div>
                 <div className="details__tab">
@@ -168,8 +170,8 @@ const DetailsElectronics = () => {
                     <p>Curabitur egestas suscipit odio. Nam vitae aliquam dui in laoreet elit. In posuere augue id velit placerat, vitae porttitor leo aliquet. Aenean non ligula sed lorem eleifend aliquam. Morbi posuere faucibus viverra. Proin ullamcorper, lorem lacinia cursus finibus.</p>
                 </div>
                 <div className="details__tab">
-                    {fakeReviews.map(review=>(
-                        <div className="details__review">
+                    {fakeReviews.map((review:Review,index:number)=>(
+                        <div key={index} className="details__review">
                             <div className="details__review-heading">
                                 <h3>{review.name}</h3>
                                 {review.rating > 0.5 ? <FontAwesomeIcon icon={faStar} /> : null}
@@ -192,4 +194,4 @@ const DetailsElectronics = () => {
     )
 }
 
-export default DetailsElectronics
+export default Details

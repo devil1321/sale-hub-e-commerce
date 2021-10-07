@@ -46,10 +46,10 @@ const Footer = () => {
                     </div>
                 </form>
                 <div className="footer__social">
-                    <i className="fa fa-facebook"></i>
-                    <i className="fa fa-twitter"></i>
-                    <i className="fa fa-instagram"></i>
-                    <i className="fa fa-pinterest"></i>              
+                    <i className="fab fa-facebook-square fa-3x"></i>
+                    <i className="fab fa-twitter-square fa-3x"></i>
+                    <i className="fab fa-instagram-square fa-3x"></i>
+                    <i className="fab fa-pinterest-square fa-3x"></i>              
                 </div>
             </div>
         </div>

@@ -19,6 +19,11 @@
                 left: 0px;
                 color: white;
                 overflow: hidden;
+                &:hover {
+                    .details__lens {
+                        opacity: 0;
+                    }
+                }
                 h1,
                 h3 {
                     margin: 10px 0px 20px;
@@ -35,25 +40,19 @@
                 width: 90%;
                 margin: 0 auto;
                 position: relative;
+                z-index: 2;
                 top: -100px;
                 left: 0px;
                 padding: 100px $p-lg 0px;
-                @include createFlex(row, space-between, center, null);
                 background-color: white;
+                @include createFlex(row, space-between, center, null);
             }
-            &__lens {
+            &__image {
                 position: relative;
                 top: 0px;
                 left: 0px;
-                height: 150px;
-                width: 150px;
-                border-radius: 100%;
-                border: 1px solid black;
-                background-position: center center;
-            }
-            &__image {
-                border: 1px solid black;
                 width: 45%;
+                background-repeat: no-repeat;
                 img {
                     width: 100%;
                 }
