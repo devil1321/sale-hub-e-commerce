@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import { Product as ProductModel }  from '../APIController/interfaces'
-import { productsActions } from '../APIController/action-creators/productsActions'
+import { productsActionsCreators } from '../APIController/action-creators/productsActions'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from '../components/Modal'
 const Product:React.FC<ProductModel|any> = ({id,title,price,description,category,image,rating}) => {
     const dispatch = useDispatch()
-    const { getProduct } = bindActionCreators(productsActions,dispatch)
+    const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
     const [isModal,setIsModal] = useState<boolean>(false)
 
     return (

@@ -1,6 +1,6 @@
 import { title } from "process"
-import { ProductsActions } from "../action-types"
-import { Actions } from '../actions'
+import { ProductActions } from "../action-types"
+import { Actions } from '../actions/productActions'
 import { Product } from '../interfaces'
 
 
@@ -28,24 +28,24 @@ const initData:InitData = {
 
 export default (state = initData, action:Actions) => {
     switch (action.type) {
-        case ProductsActions.GET_PRODUCTS:
+        case ProductActions.GET_PRODUCTS:
             return {
                 ...state,
                 products: action.payload
             }
-        case ProductsActions.GET_PRODUCTS:
+        case ProductActions.GET_PRODUCTS:
             return {
                 ...state,
                 product: action.payload
             }
          
-        case ProductsActions.GET_PRODUCT:
+        case ProductActions.GET_PRODUCT:
             return {
                 ...state,
                 product: action.payload
             }
      
-        case ProductsActions.RESET_PRODUCT:
+        case ProductActions.RESET_PRODUCT:
             return {
                 ...state,
                 product: action.payload

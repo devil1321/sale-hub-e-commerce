@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { productsActions } from '../APIController/action-creators/productsActions'
+import { productsActionsCreators } from '../APIController/action-creators/productsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { State } from '../APIController/reducers'
@@ -21,7 +21,7 @@ const Details = () => {
     }
     
     const dispatch = useDispatch()
-    const { getProduct } = bindActionCreators(productsActions,dispatch)
+    const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
     const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
     const { id, title, price, description, category, image, rating } = product
     const [fakeReviews,setFakeReviews] = useState<Review[]>([

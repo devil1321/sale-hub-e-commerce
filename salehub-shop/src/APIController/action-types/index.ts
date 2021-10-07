@@ -1,6 +1,14 @@
-export enum ProductsActions {
+export enum ProductActions {
     GET_PRODUCTS = 'GET_PRODUCTS',
     GET_PRODUCT = 'GET_PRODUCT',
     RESET_PRODUCTS = 'RESET_PRODUCTS',
     RESET_PRODUCT = 'RESET_PRODUCT'
+}
+
+export enum CartActions {
+    ADD_TO_CART = 'ADD_TO_CART',
+    INCREASE_PRODUCT = 'REMOVE_FROM_CART',
+    DECREASE_PRODUCT = 'REMOVE_FROM_CART',
+    REMOVE_FROM_CART = 'REMOVE_FROM_CART',
+    CLEAR_CART = 'CLEAR_CART'
 }

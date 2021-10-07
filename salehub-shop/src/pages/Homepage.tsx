@@ -1,5 +1,5 @@
 import React,{ useEffect } from 'react'
-import { productsActions } from '../APIController/action-creators/productsActions'
+import { productsActionsCreators } from '../APIController/action-creators/productsActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Product from '../components/Product'
@@ -10,7 +10,7 @@ const Homepage:React.FC = () => {
     const products:any  = useSelector((state:State) => state.products)
     const productsArr = products.products
     const dispatch = useDispatch()
-    const { getProducts } = bindActionCreators(productsActions,dispatch)
+    const { getProducts } = bindActionCreators(productsActionsCreators,dispatch)
 
     useEffect(()=>{
         window.scrollTo(0,0)
