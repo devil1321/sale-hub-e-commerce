@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 interface Cart{
@@ -9,14 +11,38 @@ interface Cart{
 }
 
 const Nav:React.FC<Cart> = (props) => {
+    const [isOpen,setIsOpen] = useState<boolean>(false)
     const { cart } = props
+
+    const handleMenu = () =>{
+        let navMenu = document.querySelector<HTMLUListElement>('.nav__item-menu')!
+        if(!isOpen){
+            setIsOpen(true)
+            navMenu.classList.remove('close')
+            navMenu.classList.add('open')
+        }else {
+            navMenu.classList.remove('open')
+            setTimeout(()=>{
+                navMenu.classList.add('close')
+                setIsOpen(false)
+            },1000)
+        }
+    }
+    
     return (
         <div className="nav">
             <ul className="nav__navbar">
-                <Link to="/electronics" ><li className="nav__item">Electronics</li></Link>
-                <Link to="/jewellery" ><li className="nav__item">Jewelery</li></Link>
-                <Link to="/men-clothing" ><li className="nav__item">Men`s clothing</li></Link>
-                <Link to="/woman-clothing" ><li className="nav__item">Women`s Clothing</li></Link>
+                <Link to="/" ><li className="nav__item">Home</li></Link>
+                <Link to="/all" ><li className="nav__item">All</li></Link>
+                <li className="nav__item" onClick={()=>{handleMenu()}}>
+                    Category
+                        <ul onMouseLeave={()=>{handleMenu()}} className="nav__item-menu close" >
+                            <li><Link to="/electronics/">Electronics</Link></li>
+                            <li><Link to="/jewelery">Jewelery</Link></li>
+                            <li><Link to="/men`s clothing">Men`s clothing</Link></li>
+                            <li><Link to="/women`s Clothing">Women`s Clothing</Link></li>
+                        </ul>                            
+                </li>
             </ul>
             <Link to="/" >
                 <h1 className="nav__title">SaleHub</h1>

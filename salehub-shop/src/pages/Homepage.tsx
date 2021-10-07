@@ -20,7 +20,6 @@ const Homepage:React.FC = () => {
     return (
         <div className="home">
             <Carousel />
-            <h2 className="home__title">Products</h2>
             <div className="home__products">
                 {productsArr.map((product:Object,index:number) => <Product key={index} {...product} />)}
             </div>
