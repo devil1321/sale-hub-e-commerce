@@ -1,8 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import { gsap } from 'gsap'
-const Carousel = () => {
-    
-    const [slide,setSlide] = useState(1)
+
+type Slides = {
+    slides:string[],
+    fix?:any,
+    black?:any
+}
+
+const CarouselElectronics:React.FC<Slides> = ({slides,fix,black}) => {
+    const [slide,setSlide] = useState<number>(1)
+
     const carousel = () =>{
         let tl = gsap.timeline()
         let textTl = gsap.timeline()
@@ -89,9 +96,9 @@ const Carousel = () => {
     return (
         <div className="carousel">
             {slide === 1 && <div className="carousel__slide-1">
-                <img src={'/slideshow-1.jpg'} alt="" />
-                <div className="carousel__slide-1-text">
-                    <h6>New Collection</h6>
+                <img src={`/${slides[0]}`} alt="" />,
+                <div className={`carousel__slide-1-text ${fix ? 'fix' : ''}}`}>
+                    <h6>New Products</h6>
                     <h2>Find Your</h2>
                     <h3>Perfect</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officiis.</p>
@@ -99,21 +106,21 @@ const Carousel = () => {
                 </div>
             </div>}
             {slide === 2 && <div className="carousel__slide-2">
-                <img src={'/slideshow-2.jpg'} alt="" />
-                <div className="carousel__slide-2-text">
+                <img src={`/${slides[1]}`} alt="" />
+                <div className={`carousel__slide-2-text ${fix ? 'fix' : ''} `}>
                     <h6>The Hotlist of</h6>
-                    <h2>Summer</h2>
+                    <h2>Electronics</h2>
                     <h3>Perfect</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officiis.</p>
                     <button>Shop Collection</button>
                 </div>
-            </div>}
-            {slide === 3 && <div className="carousel__slide-3">
-                <img src={'/slideshow-3.jpg'} alt="" />
-                <div className="carousel__slide-3-text">
+            </div>},
+            {slide === 3 && <div className="carousel__slide-3" >
+                <img src={`/${slides[2]}`} alt="" />
+                <div className={`carousel__slide-3-text ${fix ? 'fix' : ''}`}>
                     <h6>New Collection</h6>
-                    <h2>Fashion</h2>
-                    <h3>Glasses</h3>
+                    <h2>Products</h2>
+                    <h3>Best Sellers</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, officiis.</p>
                     <button>Shop Collection</button>
                 </div>
@@ -122,4 +129,4 @@ const Carousel = () => {
     )
 }
 
-export default Carousel
+export default CarouselElectronics

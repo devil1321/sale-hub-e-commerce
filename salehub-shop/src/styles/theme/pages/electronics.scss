@@ -1,0 +1,27 @@
+.electronics {
+    .carousel__slide-1,
+    .carousel__slide-2,
+    .carousel__slide-3 {
+        img {
+            width: 120%;
+        }
+    }
+    .carousel__slide-2-text {
+        bottom: 220px !important;
+        h2,
+        h3,
+        h6,
+        p {
+            color: black;
+        }
+    }
+    .carousel__slide-3-text {
+        bottom: 400px !important;
+        h2,
+        h3,
+        h6,
+        p {
+            color: black;
+        }
+    }
+}

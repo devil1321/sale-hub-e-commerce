@@ -34,11 +34,11 @@ const Nav:React.FC<Cart> = (props) => {
                 <Link to="/all" ><li className="nav__item">All</li></Link>
                 <li className="nav__item" onClick={()=>{handleMenu()}}>
                     Category
-                        <ul onMouseLeave={()=>{handleMenu()}} className="nav__item-menu" >
-                            <li><Link to="/category/electronics">Electronics</Link></li>
-                            <li><Link to="/category/jewelery">Jewelery</Link></li>
-                            <li><Link to="/category/men`s clothing">Men`s clothing</Link></li>
-                            <li><Link to="/category/women`s Clothing">Women`s Clothing</Link></li>
+                        <ul className="nav__item-menu" >
+                            <li onClick={()=>{handleMenu()}}><Link to="/category/electronics">Electronics</Link></li>
+                            <li onClick={()=>{handleMenu()}}><Link to="/category/jewelery">Jewelery</Link></li>
+                            <li onClick={()=>{handleMenu()}}><Link to="/category/men`s clothing">Men`s clothing</Link></li>
+                            <li onClick={()=>{handleMenu()}}><Link to="/category/women`s Clothing">Women`s Clothing</Link></li>
                         </ul>                            
                 </li>
             </ul>
