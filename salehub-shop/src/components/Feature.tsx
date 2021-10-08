@@ -3,9 +3,9 @@ import { AnyIfEmpty } from 'react-redux'
 import { Product as ProductModel } from '../APIController/interfaces'
 type FeatureProps = {
     images:any[],
-    fromLeft?:any
+    fromRight?:any
 }
-const Feature:React.FC<FeatureProps> = ({images,fromLeft}) => {
+const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
     const [product,setProduct] = useState<any>(null)
 
     const handleImage = (e:any,image:ProductModel):void =>{
@@ -19,7 +19,7 @@ const Feature:React.FC<FeatureProps> = ({images,fromLeft}) => {
     },[images])
     return (
         <div className="feature">
-            {product && <div className="feature__product">
+            {product && <div className={`feature__product ${fromRight ? "fromRight" : ""}`}>
                 <img src={product.image} alt="" />
                 <div className="feature__product-text">
                     <h2>{product.title}</h2>
@@ -28,7 +28,7 @@ const Feature:React.FC<FeatureProps> = ({images,fromLeft}) => {
                     <p>{product.description}</p>
                 </div>
             </div>}
-            <div className="feature__images">
+            <div className={`feature__images  ${fromRight ? "fromRight" : ""}`}>
                 {images.map((product:ProductModel) => {
                     return (
                     <div className="feature__image">

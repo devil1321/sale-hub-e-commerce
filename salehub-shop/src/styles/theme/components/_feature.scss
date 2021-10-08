@@ -4,12 +4,20 @@
     &__images {
         margin: 0px 50px;
         width: 18.5%;
+        order: 2;
         @include createFlex(column, center, flex-start, null);
+        &.fromRight {
+            order: 1;
+        }
         img {
             width: 100%;
         }
     }
     &__product {
+        order: 1;
+        &.fromRight {
+            order: 2;
+        }
         width: 40%;
     }
     &__image {
