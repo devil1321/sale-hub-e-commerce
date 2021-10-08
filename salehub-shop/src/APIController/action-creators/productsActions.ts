@@ -23,7 +23,7 @@ const getProduct = (id:number) =>(dispatch:Dispatch<Actions>):void =>{
     })
 }
 const getCategory = (category:string) =>(dispatch:Dispatch<Actions>) =>{
-    axios.get(`https://fakestoreapi.com/products/category`+ category)
+    axios.get(`https://fakestoreapi.com/products/category/`+ category)
     .then(res => {
         dispatch({
             type: ProductActions.GET_CATEGORY,

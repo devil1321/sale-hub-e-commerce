@@ -8,8 +8,8 @@ import CarouselClothes from '../components/CarouselClothes'
 import { State } from '../APIController/reducers'
 const All:React.FC = () => {
 
-    const products:any  = useSelector((state:State) => state.products)
-    const productsArr = products.products
+    const products:any = useSelector((state:State) => state.products)
+    const productsArr:ProductModel[] = products.products
     const dispatch = useDispatch()
     const { getProducts } = bindActionCreators(productsActionsCreators,dispatch)
     const [slides,setSlides] = useState<string[]>([

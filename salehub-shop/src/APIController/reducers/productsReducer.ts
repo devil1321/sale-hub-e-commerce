@@ -41,13 +41,13 @@ export default (state = initData, action:Actions) => {
         case ProductActions.GET_CATEGORY:
             return {
                 ...state,
-                product: action.payload
+                products: action.payload
             }
          
         case ProductActions.RESET_PRODUCTS:
             return {
                 ...state,
-                product: action.payload
+                products: action.payload
             }
      
         case ProductActions.RESET_PRODUCT:

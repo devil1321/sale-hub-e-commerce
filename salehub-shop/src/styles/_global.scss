@@ -3,7 +3,9 @@ a {
     color: $black;
 }
 
-.container {}
+.container-inner {
+    @include createFlex(row, center, center, wrap)
+}
 
 .italic {
     font-style: italic;
