@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import CarouselElectronics from '../../components/CarouselElectronics'
 import { State } from '../../APIController/reducers'
 import Product from '../../components/Product'
+import Feature from '../../components/Feature'
 const Electronics = () => {
     const products:any = useSelector((state:State) => state.products)
     const productsArr:ProductModel[] = products.products
@@ -23,6 +24,7 @@ const Electronics = () => {
         <div className="electronics">
             <CarouselElectronics slides ={slides} />
             <div className="electronics__content">
+                <Feature images={productsArr.slice(0,3)}/>
                 <div className="container-inner">
                     {productsArr.map((product:ProductModel,index:number) => <Product key={index} {...product} />)}
                 </div>
