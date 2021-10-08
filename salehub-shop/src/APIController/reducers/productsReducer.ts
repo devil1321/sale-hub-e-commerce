@@ -33,13 +33,18 @@ export default (state = initData, action:Actions) => {
                 ...state,
                 products: action.payload
             }
-        case ProductActions.GET_PRODUCTS:
+        case ProductActions.GET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
+            }
+        case ProductActions.GET_CATEGORY:
             return {
                 ...state,
                 product: action.payload
             }
          
-        case ProductActions.GET_PRODUCT:
+        case ProductActions.RESET_PRODUCTS:
             return {
                 ...state,
                 product: action.payload

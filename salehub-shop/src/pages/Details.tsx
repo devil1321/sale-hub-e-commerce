@@ -52,7 +52,7 @@ const Details = () => {
         }
     ])
 
-    const hanleAnimateHero = () =>{  
+    const hanleAnimateHero = ():void =>{  
         //   gsap.registerPlugin(ScrollTrigger);
         gsap.fromTo('.details__hero-text h1',{y:-400,opacity:0},{y:0,opacity:1,rotateX:720,duration:1.5, 
         //     scrollTrigger: {

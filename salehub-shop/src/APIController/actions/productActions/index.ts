@@ -10,6 +10,13 @@ interface ResetProducts{
     payload:Product[]
 }
 
+
+interface GetCategory{
+    type:ProductActions.GET_CATEGORY,
+    payload:Product[]
+}
+
+
 interface GetProduct{
     type:ProductActions.GET_PRODUCT,
     payload:Product
@@ -20,4 +27,4 @@ interface ResetProduct{
     payload:Product
 }
 
-export type Actions = GetProducts | ResetProducts | GetProduct | ResetProduct
+export type Actions = GetProducts | ResetProducts | GetProduct | ResetProduct | GetCategory

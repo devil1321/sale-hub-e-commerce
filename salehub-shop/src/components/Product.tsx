@@ -5,7 +5,7 @@ import { productsActionsCreators } from '../APIController/action-creators/produc
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from '../components/Modal'
-const Product:React.FC<ProductModel|any> = ({id,title,price,description,category,image,rating}) => {
+const Product:React.FC<ProductModel> = ({id,title,price,description,category,image,rating}) => {
     const dispatch = useDispatch()
     const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
     const [isModal,setIsModal] = useState<boolean>(false)

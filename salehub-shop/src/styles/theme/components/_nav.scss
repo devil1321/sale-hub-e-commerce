@@ -37,6 +37,7 @@
             }
         }
         &-menu {
+            visibility: hidden;
             opacity: 0;
             width: 200px;
             position: absolute;
@@ -57,11 +58,9 @@
                 }
             }
             &.open {
+                visibility: visible;
                 top: 45px;
                 opacity: 1;
-            }
-            &.close {
-                opacity: 0;
             }
         }
     }
