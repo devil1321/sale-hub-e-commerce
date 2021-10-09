@@ -15,12 +15,12 @@
         cursor: pointer;
         width: 50px;
         height: 50px;
-        background-color: rgba(0, 0, 0, .15);
+        background-color: rgba(255, 255, 255, 0.15);
         border-radius: 100%;
         @include createFlex(row, center, center, null);
         transition: all 500ms ease-in-out;
         &:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.5);
             svg {
                 font-size: pxToRem(40);
             }
