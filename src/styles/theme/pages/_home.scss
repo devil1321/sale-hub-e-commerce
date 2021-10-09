@@ -2,6 +2,9 @@
     .carousel {
         margin: 0px;
     }
+    #article {
+        margin: 100px 0px -100px;
+    }
     &__feature {
         min-width: 55%;
         padding: 0px $p-lg;
@@ -37,6 +40,11 @@
         position: relative;
         top: 0px;
         left: 0px;
+        &:first-of-type {
+            .button {
+                left: 0px;
+            }
+        }
         &:hover {
             button {
                 left: 0px;
@@ -74,7 +82,7 @@
         margin-left: 100px;
         max-width: 45%;
         h2 {
-            font-size: pxToRem(40)
+            font-size: pxToRem(40);
         }
         p {
             width: 80%;

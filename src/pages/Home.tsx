@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import CarouselClothes from '../components/CarouselClothes'
+import Slider from '../components/Slider'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -15,8 +16,8 @@ const Homepage = () => {
                 { top:'-100px', left:'-500px', opacity:0 },
                 { top:'100px', left:'20px', opacity:1, 
                 scrollTrigger: {
-                    trigger: '.home__article',
-                    start:'0px',
+                    trigger: '#article',
+                    start:'-50px',
                     end:'+=150px',
                     scrub:6
                 }})
@@ -24,41 +25,41 @@ const Homepage = () => {
                 { top:'100px', left:'-500px', opacity:0 },
                 { top:'0px', left:'80px', opacity:1, 
                 scrollTrigger: {
-                trigger: '.home__article',
+                trigger: '#article',
                 scrub:6,
-                start:'0px',
+                start:'-50px',
                 end:'+=150px'
             }})
 
         let tl = gsap.timeline()
-        tl.fromTo('#title',{x:500},{x:0,  
+        tl.fromTo('#title',{x:500},{x:-50,  
             scrollTrigger: {
-            trigger: '.home__article',
+            trigger: '#article',
             scrub:3,
-            start:'0px',
+            start:'-50px',
             end:'+=150px'
         }})
         .fromTo('.paragraph-1',{x:600},{x:0,
             scrollTrigger: {
-                trigger: '.home__article',
+                trigger: '#article',
                 scrub:3,
-                start:'0px',
+                start:'-50px',
                 end:'+150px'
         }})
         .fromTo('.paragraph-2',{x:700},{
             x:0,
             scrollTrigger: {
-                trigger: '.home__article',
+                trigger: '#article',
                 scrub:3,
-                start:'0px',
+                start:'-50px',
                 end:'+=150px'
         }})
         .fromTo('.paragraph-3',{x:800},{
             x:0,
             scrollTrigger: {
-                trigger: '.home__article',
+                trigger: '#article',
                 scrub:3,
-                start:'0px',
+                start:'-50px',
                 end:'+=150px'
         }})
         
@@ -69,12 +70,13 @@ const Homepage = () => {
     return (
         <div className="home">
             <CarouselClothes slides={slides}/>
-            <h2 className="title">Explore Collections</h2>
-            <div className="home__feature">
+            <section>
+                <h2 className="title">Explore Collections</h2>
+                <div className="home__feature">
                 <div className="home__image">
                     <img src='/women-2.jpg' alt="" />
-                    <button>Explore Collection</button>
-                    <button>Women`s</button>
+                    <button className="button">Explore Collection</button>
+                    <button className="button">Women`s</button>
                 </div>
                 <div className="home__image-group">
                     <div className="home__image">
@@ -93,9 +95,11 @@ const Homepage = () => {
                         <button>Men`s</button>
                     </div>
                 </div>
-            </div>
-            <div className="home__article">
-                <h2 className="title">Read Our Blog</h2>
+                </div>
+            </section>
+            <section>
+                <h2 className="title" id="article">Read Our Blog</h2>
+                <div className="home__article">
                 <div className="home__article-inner">
                     <div className="home__article-images">
                         <img className="slide-1" src="slideshow-3.jpg" alt="" />
@@ -108,7 +112,15 @@ const Homepage = () => {
                         <p className="paragraph-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, fuga.</p>
                     </div>
                 </div>
-            </div>
+                </div>
+            </section>
+
+            <section className="testimonials">
+                <h2 className="title">We Love</h2>
+                <div className="home__testimonials">
+                    <Slider items={[]}/>
+                </div>  
+            </section>
         </div>
     )
 }
