@@ -18,6 +18,7 @@
         @include createFlex(row, space-between, center, null);
     }
     &__item {
+        cursor: pointer;
         position: relative;
         top: 0px;
         left: 0px;

@@ -25,8 +25,7 @@ const Product:React.FC<ProductModel> = ({id,title,price,description,category,ima
                 <p className="product__price"  onClick={()=>{setIsModal(true)}}>{price}$</p>
                 <p className="product__badge red">Rate {rating.rate}</p>
                 <p className="product__badge yellow">Count {rating.count}</p>
-                <button>Show</button>
-            </div>
+                </div>
         </div>
         </React.Fragment>
     )

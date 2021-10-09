@@ -1,0 +1,92 @@
+.home {
+    .carousel {
+        margin: 0px;
+    }
+    &__feature {
+        min-width: 55%;
+        padding: 0px $p-lg;
+        @include createFlex(row, space-between, center, null);
+        img {
+            width: 100%;
+            animation: scale 25s ease-in-out infinite;
+            @keyframes scale {
+                0% {
+                    transform: scale(1)
+                }
+                50% {
+                    transform: scale(1.3)
+                }
+                100% {
+                    transform: scale(1)
+                }
+            }
+        }
+    }
+    &__image-group {
+        margin-left: 20px;
+        width: 39.5%;
+        @include createFlex(column, center, center, null);
+        img {
+            width: 100%;
+        }
+    }
+    &__image {
+        cursor: pointer;
+        overflow: hidden;
+        margin: 10px 0px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        &:hover {
+            button {
+                left: 0px;
+            }
+        }
+        @include btn();
+        button {
+            position: absolute;
+            bottom: 70px;
+            left: -250px;
+            transition: all 0.5s ease-in-out;
+            &:last-of-type {
+                bottom: 20px;
+                transition: all 0.7s ease-in-out;
+            }
+        }
+    }
+    &__article {
+        padding: 100px $p-lg;
+        &-inner {
+            @include createFlex(row, center, center, wrap);
+        }
+    }
+    &__article-images {
+        max-width: 45%;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        img {
+            width: 95%;
+            position: relative;
+            &:first-of-type {
+                top: 100px;
+                left: -20px;
+            }
+            &:last-of-type {
+                top: 0px;
+                left: 80px;
+            }
+        }
+    }
+    &__article-text {
+        margin-left: 100px;
+        max-width: 45%;
+        h2 {
+            font-size: pxToRem(40)
+        }
+        p {
+            width: 80%;
+            text-align: justify;
+        }
+    }
+}
