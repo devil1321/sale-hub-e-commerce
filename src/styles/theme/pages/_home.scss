@@ -68,14 +68,6 @@
         img {
             width: 95%;
             position: relative;
-            &:first-of-type {
-                top: 100px;
-                left: -20px;
-            }
-            &:last-of-type {
-                top: 0px;
-                left: 80px;
-            }
         }
     }
     &__article-text {

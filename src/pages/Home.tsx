@@ -1,11 +1,71 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import CarouselClothes from '../components/CarouselClothes'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const Homepage = () => {
     const [slides,setSlides] = useState<string[]>([
         'slideshow-1.jpg',
         'slideshow-2.jpg',
         'slideshow-3.jpg'
     ])
+    const animateBlog = () =>{
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo('.slide-1',
+                { top:'-100px', left:'-500px', opacity:0 },
+                { top:'100px', left:'20px', opacity:1, 
+                scrollTrigger: {
+                    trigger: '.home__article',
+                    start:'0px',
+                    end:'+=150px',
+                    scrub:6
+                }})
+        gsap.fromTo('.slide-2',
+                { top:'100px', left:'-500px', opacity:0 },
+                { top:'0px', left:'80px', opacity:1, 
+                scrollTrigger: {
+                trigger: '.home__article',
+                scrub:6,
+                start:'0px',
+                end:'+=150px'
+            }})
+
+        let tl = gsap.timeline()
+        tl.fromTo('#title',{x:500},{x:0,  
+            scrollTrigger: {
+            trigger: '.home__article',
+            scrub:3,
+            start:'0px',
+            end:'+=150px'
+        }})
+        .fromTo('.paragraph-1',{x:600},{x:0,
+            scrollTrigger: {
+                trigger: '.home__article',
+                scrub:3,
+                start:'0px',
+                end:'+150px'
+        }})
+        .fromTo('.paragraph-2',{x:700},{
+            x:0,
+            scrollTrigger: {
+                trigger: '.home__article',
+                scrub:3,
+                start:'0px',
+                end:'+=150px'
+        }})
+        .fromTo('.paragraph-3',{x:800},{
+            x:0,
+            scrollTrigger: {
+                trigger: '.home__article',
+                scrub:3,
+                start:'0px',
+                end:'+=150px'
+        }})
+        
+        }
+    useEffect(()=>{
+        animateBlog()
+    },[])
     return (
         <div className="home">
             <CarouselClothes slides={slides}/>
@@ -38,14 +98,14 @@ const Homepage = () => {
                 <h2 className="title">Read Our Blog</h2>
                 <div className="home__article-inner">
                     <div className="home__article-images">
-                        <img src="slideshow-3.jpg" alt="" />
-                        <img src="slideshow-1.jpg" alt="" />
+                        <img className="slide-1" src="slideshow-3.jpg" alt="" />
+                        <img className="slide-2" src="slideshow-1.jpg" alt="" />
                     </div>
                     <div className="home__article-text">
-                        <h2>Best Clothes</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, nobis voluptatum aperiam porro dignissimos quod tempora quo quasi odio cum.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, nobis voluptatum aperiam porro dignissimos quod tempora quo quasi odio cum.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, fuga.</p>
+                        <h2 className="title" id="title">Best Clothes</h2>
+                        <p className="paragraph-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, nobis voluptatum aperiam porro dignissimos quod tempora quo quasi odio cum.</p>
+                        <p className="paragraph-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, nobis voluptatum aperiam porro dignissimos quod tempora quo quasi odio cum.</p>
+                        <p className="paragraph-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, fuga.</p>
                     </div>
                 </div>
             </div>
