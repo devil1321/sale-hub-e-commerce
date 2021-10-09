@@ -1,9 +1,45 @@
 .slider {
+    position: relative;
+    top: 0px;
+    left: 0px;
     &__carousel {
         @include createFlex(row, center, center, null);
-        margin-left: 100px;
+        margin-left: 120px;
+        transition: all 1s ease-in-out;
     }
     .product {
         min-width: calc(30% - 20px) !important;
+    }
+    &__next,
+    &__prev {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, .15);
+        border-radius: 100%;
+        @include createFlex(row, center, center, null);
+        transition: all 500ms ease-in-out;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            svg {
+                font-size: pxToRem(40);
+            }
+        }
+        svg {
+            font-size: pxToRem(35);
+            transition: all 500ms ease-in-out;
+        }
+    }
+    &__next {
+        position: absolute;
+        z-index: 2;
+        right: 50px;
+        top: 100px;
+    }
+    &__prev {
+        position: absolute;
+        z-index: 2;
+        left: 50px;
+        top: 100px;
     }
 }

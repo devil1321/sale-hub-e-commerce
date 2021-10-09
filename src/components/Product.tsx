@@ -12,21 +12,20 @@ const Product:React.FC<ProductModel> = ({id,title,price,description,category,ima
 
     return (
         <React.Fragment>
-        {isModal && <Modal image={image} title={title} price={price} setIsModal={setIsModal} /> }
-
-        <div className="product">
-                <Link to={`/details-${category}/${id}`} onClick={() => {getProduct(id)}}>
-                    <div className="product__image">
-                        <img src={image} alt="product-image" />
+            {isModal && <Modal image={image} title={title} price={price} setIsModal={setIsModal} /> }
+            <div className="product">
+                    <Link to={`/details-${category}/${id}`} onClick={() => {getProduct(id)}}>
+                        <div className="product__image">
+                            <img src={image} alt="product-image" />
+                        </div>
+                    </Link>
+                <h3>{title}</h3>
+                <div className="product__footer">
+                    <p className="product__price"  onClick={()=>{setIsModal(true)}}>{price}$</p>
+                    <p className="product__badge red">Rate {rating.rate}</p>
+                    <p className="product__badge yellow">Count {rating.count}</p>
                     </div>
-                </Link>
-            <h3>{title}</h3>
-            <div className="product__footer">
-                <p className="product__price"  onClick={()=>{setIsModal(true)}}>{price}$</p>
-                <p className="product__badge red">Rate {rating.rate}</p>
-                <p className="product__badge yellow">Count {rating.count}</p>
-                </div>
-        </div>
+            </div>
         </React.Fragment>
     )
 }
