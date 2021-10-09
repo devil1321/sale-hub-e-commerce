@@ -128,7 +128,7 @@ const Details = () => {
                                 <div className="details__colour-green" id="green"></div>
                             </div>
                         </div>
-                        <div className="details__sizes">
+                        {category !== 'electronics' && <div className="details__sizes">
                             <h3>Sizes:</h3>
                             <div className="details__sizes-wrapper">
                                 <div className="details__size-btn active" id="s">S</div>
@@ -136,7 +136,7 @@ const Details = () => {
                                 <div className="details__size-btn" id="l">L</div>
                                 <div className="details__size-btn" id="xl">XL</div>
                             </div>
-                        </div>
+                        </div>}
                          <div className="details__notes-field">
                              <label htmlFor="Notes"><h3>Notes:</h3></label>
                              <textarea name="" id="" cols={70} rows={10} placeholder="Your Notes for your order"></textarea>

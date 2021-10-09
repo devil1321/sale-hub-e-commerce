@@ -1,10 +1,20 @@
 import React,{useState,useEffect} from 'react'
-import CarouselClothes from '../components/CarouselClothes'
-import Slider from '../components/Slider'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { Product as ProductModel } from '../APIController/interfaces'
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { productsActionsCreators } from '../APIController/action-creators/productsActions';
+import { State } from '../APIController/reducers';
+import CarouselClothes from '../components/CarouselClothes'
+import Slider from '../components/Slider'
 const Homepage = () => {
+
+    const products = useSelector((state:State) => state.products.products)
+    const dispatch = useDispatch()
+    const productsArr:ProductModel[] = products
+    const { getProducts } = bindActionCreators(productsActionsCreators,dispatch)
+
     const [slides,setSlides] = useState<string[]>([
         'slideshow-1.jpg',
         'slideshow-2.jpg',
@@ -17,8 +27,8 @@ const Homepage = () => {
                 { top:'100px', left:'20px', opacity:1, 
                 scrollTrigger: {
                     trigger: '#article',
-                    start:'-50px',
-                    end:'+=150px',
+                    start:'-120px',
+                    end:'+=50px',
                     scrub:6
                 }})
         gsap.fromTo('.slide-2',
@@ -27,44 +37,45 @@ const Homepage = () => {
                 scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-50px',
-                end:'+=150px'
+                start:'-120px',
+                end:'+=50px',
             }})
 
         let tl = gsap.timeline()
-        tl.fromTo('#title',{x:500},{x:-50,  
+        tl.fromTo('#title',{x:600},{x:-50,  
             scrollTrigger: {
             trigger: '#article',
-            scrub:3,
-            start:'-50px',
-            end:'+=150px'
+            scrub:6,
+            start:'-120px',
+            end:'+=50px',
         }})
-        .fromTo('.paragraph-1',{x:600},{x:0,
+        .fromTo('.paragraph-1',{x:700},{x:0,
             scrollTrigger: {
                 trigger: '#article',
-                scrub:3,
-                start:'-50px',
-                end:'+150px'
+                scrub:6,
+                start:'-120px',
+                end:'+=50px',
         }})
-        .fromTo('.paragraph-2',{x:700},{
+        .fromTo('.paragraph-2',{x:800},{
             x:0,
             scrollTrigger: {
                 trigger: '#article',
-                scrub:3,
-                start:'-50px',
-                end:'+=150px'
+                scrub:6,
+                start:'-120px',
+                    end:'+=50px',
         }})
-        .fromTo('.paragraph-3',{x:800},{
+        .fromTo('.paragraph-3',{x:900},{
             x:0,
             scrollTrigger: {
                 trigger: '#article',
-                scrub:3,
-                start:'-50px',
-                end:'+=150px'
+                scrub:6,
+                start:'-120px',
+                end:'+=50px',
         }})
         
         }
     useEffect(()=>{
+        getProducts()
         animateBlog()
     },[])
     return (
@@ -116,9 +127,9 @@ const Homepage = () => {
             </section>
 
             <section className="testimonials">
-                <h2 className="title">We Love</h2>
+                <h2 className="title" id="welove">We Love</h2>
                 <div className="home__testimonials">
-                    <Slider items={[]}/>
+                    <Slider items={productsArr}/>
                 </div>  
             </section>
         </div>

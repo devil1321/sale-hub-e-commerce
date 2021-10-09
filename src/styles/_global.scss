@@ -3,6 +3,11 @@ a {
     color: $black;
 }
 
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
 .container-inner {
     @include createFlex(row, center, center, wrap)
 }

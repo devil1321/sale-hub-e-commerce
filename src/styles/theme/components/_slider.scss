@@ -1,0 +1,9 @@
+.slider {
+    &__carousel {
+        @include createFlex(row, center, center, null);
+        margin-left: 100px;
+    }
+    .product {
+        min-width: calc(30% - 20px) !important;
+    }
+}
