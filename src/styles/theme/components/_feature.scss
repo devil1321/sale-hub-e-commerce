@@ -34,5 +34,14 @@
         h3:last-of-type {
             text-decoration: underline;
         }
+        @include btn();
+        button {
+            background-color: greenyellow;
+            color: white;
+            &:hover {
+                background-color: green;
+                color: black;
+            }
+        }
     }
 }

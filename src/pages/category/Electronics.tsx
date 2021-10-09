@@ -25,6 +25,7 @@ const Electronics = () => {
             <CarouselElectronics slides ={slides} />
             <div className="electronics__content">
                 <Feature images={productsArr.slice(0,3)}/>
+                <h2 className="title-clothes">Explore Our Shop</h2>
                 <div className="container-inner">
                     {productsArr.map((product:ProductModel,index:number) => <Product key={index} {...product} />)}
                 </div>

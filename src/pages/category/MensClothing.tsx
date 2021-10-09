@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import CarouselClothes from '../../components/CarouselClothes'
 import { State } from '../../APIController/reducers'
 import Product from '../../components/Product'
-
+import ProductsInnerHero from '../../components/ProductsInnerHero'
 const Electronics = () => {
     const dispatch = useDispatch()
     const { getCategory } = bindActionCreators(productsActionsCreators,dispatch)
@@ -24,7 +24,8 @@ const Electronics = () => {
         <div className="mens">
             <CarouselClothes slides={slides} fix />
             <div className="mens__content">
-                mens
+                <ProductsInnerHero products={productsArr.slice(0,3)}/>
+                <h2 className="title-clothes">Explore Our Shop</h2>
                 <div className="container-inner">
                     {productsArr.map((product:ProductModel,index:number) => <Product key={index} {...product} />)}
                 </div>

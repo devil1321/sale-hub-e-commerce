@@ -26,12 +26,13 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
                     <h3>Price: {product.price}$</h3>
                     <h3 >Description</h3>
                     <p>{product.description}</p>
+                    <button>Buy Now</button>
                 </div>
             </div>}
             <div className={`feature__images  ${fromRight ? "fromRight" : ""}`}>
-                {images.map((product:ProductModel) => {
+                {images.map((product:ProductModel,index:number) => {
                     return (
-                    <div className="feature__image">
+                    <div className={`feature__image ${index === 0 ? "active" : ""}`}>
                         <img src={product.image} onClick={(e)=>handleImage(e,product)}/>
                     </div>
                 )
