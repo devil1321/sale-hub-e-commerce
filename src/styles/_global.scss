@@ -12,6 +12,16 @@ a {
     text-decoration: underline;
 }
 
+[class^='title'] {
+    font-size: pxToRem(60);
+    text-align: center;
+    text-decoration: underline;
+}
+
+.title-clothes {
+    color: orangered;
+}
+
 .overlay {
     position: absolute;
     top: 0px;
