@@ -50,10 +50,12 @@ const decreaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
     })
 }
 
-const clearCart = () => (dispatch:Dispatch<Action>) =>{
+const clearCart = (e:any) => (dispatch:Dispatch<Action>) =>{
+    e.preventDefault()
     dispatch({
         type:CartActions.CLEAR_CART,
-        payload:[]
+        payload:[],
+        cart:[]
     })
 }
 

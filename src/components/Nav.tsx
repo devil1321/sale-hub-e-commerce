@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { cartActionsCreators } from '../APIController/action-creators/cartActions'
 import { Product as ProductModel } from '../APIController/interfaces'
+import Cart from './Cart'
 import CartItem from './CartItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -11,13 +12,14 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { State } from '../APIController/reducers'
+import { setTimeout } from 'timers'
 
 const Nav = () => {
     const [isOpen,setIsOpen] = useState<boolean>(false)
-    const [isCart,setIsCart] = useState<boolean>(true)
     const dispatch = useDispatch()
     const { cart }:{cart:ProductModel[]} = useSelector((state:State) => state.cart)
     const { removeFromCart,clearCart } = bindActionCreators(cartActionsCreators,dispatch)
+  
     const handleMenu = () =>{
         let navMenu = document.querySelector<HTMLUListElement>('.nav__item-menu')!
         if(!isOpen){
@@ -28,6 +30,19 @@ const Nav = () => {
             setTimeout(()=>{
                 setIsOpen(false)
             },1000)
+        }
+    }
+
+    const handleCart = ():void =>{
+        let cart = document.querySelector('.cart')!
+        if(cart){
+            if(cart.style.transform === 'translateX(100%)'){   
+                cart.style.transform = 'translateX(0%)'
+
+            }else{
+                cart.style.transform = 'translateX(100%)'
+               
+            }
         }
     }
     
@@ -56,16 +71,12 @@ const Nav = () => {
                     Search
                 </li>
                 <li className="nav__menu-item">Account</li>
-                <li className="nav__menu-item">
+                <li className="nav__menu-item" onClick={()=>{handleCart()}}>
                     <FontAwesomeIcon icon={faCartArrowDown} />
                     MyCart
                     <div className="nav__badge">{cart.length}</div>
-                    {isCart && <div className="nav__cart">
-                        {cart.map((item:ProductModel,index:number)=>{
-                            return <CartItem key={item.id} item = {item} />
-                        })}
-                    </div>}
                 </li>
+                <Cart cart={cart} handleCart ={handleCart}/>
             </ul>
         </div>
     )
