@@ -1,13 +1,16 @@
-import { Product } from '../interfaces'
+import { Product as ProductModel} from '../interfaces'
 import { CartActions } from '../action-types'
 import { Action } from '../actions/cartActions'
+import { totalmem } from 'os'
 
 type CartData = {
-    cart:Product[]
+    cart:ProductModel[],
+    total:number
 }
 
 const initData:CartData = {
-    cart:[]
+    cart:[],
+    total:0
 }
 
 
@@ -16,27 +19,32 @@ export default (state = initData, action:Action) => {
         case CartActions.ADD_TO_CART:
             return{
                 ...state,
-                cart:action.payload
+                cart:action.payload,
             }
         case CartActions.REMOVE_FROM_CART:
             return {
                 ...state,
-                cart:action.payload
+                cart:action.payload,
+
             }
         case CartActions.INCREASE_PRODUCT:
             return {
                 ...state,
-                cart:action.payload
+                cart:action.payload,
+
             }
         case CartActions.DECREASE_PRODUCT:
             return {
                 ...state,
-                cart:action.payload
+                cart:action.payload,
+
             }
         case CartActions.CLEAR_CART:
             return {
                 ...state,
-                cart:[]
+                cart:[],
             }
+        default:
+            return state
     }
 }

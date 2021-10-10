@@ -27,4 +27,4 @@ interface ResetProduct{
     payload:Product
 }
 
-export type Actions = GetProducts | ResetProducts | GetProduct | ResetProduct | GetCategory
+export type Action = GetProducts | ResetProducts | GetProduct | ResetProduct | GetCategory

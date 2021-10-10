@@ -1,6 +1,6 @@
 import { title } from "process"
 import { ProductActions } from "../action-types"
-import { Actions } from '../actions/productActions'
+import { Action } from '../actions/productActions'
 import { Product } from '../interfaces'
 
 
@@ -19,6 +19,8 @@ const initData:InitData = {
         description:'',
         category:'',
         image:'',
+        quantity:1,
+        total:0,
         rating:{
             rate:0,
             count:0
@@ -26,7 +28,7 @@ const initData:InitData = {
     }
 }
 
-export default (state = initData, action:Actions) => {
+export default (state = initData, action:Action) => {
     switch (action.type) {
         case ProductActions.GET_PRODUCTS:
             return {

@@ -1,0 +1,28 @@
+.footer {
+    margin: 0px;
+}
+
+.notfound {
+    width: 100vw;
+    height: 50vh;
+    @include createFlex(column, center, center, null);
+    background-size: cover;
+    h2 {
+        margin-bottom: 50px;
+    }
+    h1,
+    h2 {
+        margin-top: -40px;
+        color: red;
+        font-size: pxToRem(50);
+        text-decoration: underline;
+    }
+    @include btn();
+    button {
+        cursor: pointer;
+        background-color: yellowgreen;
+        &:hover {
+            background-color: green;
+        }
+    }
+}

@@ -5,14 +5,20 @@ import { productsActionsCreators } from '../APIController/action-creators/produc
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from '../components/Modal'
-const Product:React.FC<ProductModel> = ({id,title,price,description,category,image,rating}) => {
+
+type ProductProps = {
+    product:ProductModel
+}
+
+const Product:React.FC<ProductProps> = ({product}) => {
+    const {id,title,price,description,category,image,rating} = product
     const dispatch = useDispatch()
     const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
     const [isModal,setIsModal] = useState<boolean>(false)
 
     return (
         <React.Fragment>
-            {isModal && <Modal image={image} title={title} price={price} setIsModal={setIsModal} /> }
+            {isModal && <Modal product={product} setIsModal={setIsModal} /> }
             <div className="product">
                     <Link to={`/details-${category}/${id}`} onClick={() => {getProduct(id)}}>
                         <div className="product__image">

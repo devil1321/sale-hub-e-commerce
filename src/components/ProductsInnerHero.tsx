@@ -19,7 +19,7 @@ const ProductsInnerHero:React.FC<ProductsProps> = ({products}) => {
     const [isModal,setIsModal] = useState<boolean>(false)
     return (
         <div className="product-i">
-            {isModal && <Modal image={productModal.image} title={productModal.title} price={productModal.price} setIsModal={setIsModal} />}
+            {isModal && <Modal product={productModal} setIsModal={setIsModal} />}
             {products.map((product:ProductModel) => {
                 const {id,image,title,price,category} = product
                 return (

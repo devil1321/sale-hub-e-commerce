@@ -27,7 +27,7 @@ const All:React.FC = () => {
             <CarouselClothes slides = {slides}/>
             <h2 className="title-clothes">Explore Our Shop</h2>
             <div className="all__products">
-                {productsArr.map((product:ProductModel,index:number) => <Product key={index} {...product} />)}
+                {productsArr.map((product:ProductModel,index:number) => <Product key={index} product={product} />)}
             </div>
         </div>
     )

@@ -24,53 +24,65 @@ const Homepage = () => {
         gsap.registerPlugin(ScrollTrigger);
         gsap.fromTo('.slide-1',
                 { top:'-100px', left:'-500px', opacity:0 },
-                { top:'100px', left:'20px', opacity:1, 
+                { top:'100px', left:'20px', opacity:1, force3D:true,
                 scrollTrigger: {
                     trigger: '#article',
-                    start:'-120px',
+                    start:'-150px',
                     end:'+=50px',
-                    scrub:6
+                    scrub:6,
+                    onLeaveBack: self => self.disable()
                 }})
+
         gsap.fromTo('.slide-2',
                 { top:'100px', left:'-500px', opacity:0 },
-                { top:'0px', left:'80px', opacity:1, 
+                { top:'0px', left:'80px', opacity:1, force3D:true,
                 scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-120px',
+                start:'-150px',
                 end:'+=50px',
+                onLeaveBack: self => self.disable()
+
             }})
 
         let tl = gsap.timeline()
-        tl.fromTo('#title',{x:600},{x:-50,  
+        tl.fromTo('#title',{x:600},{x:-50, force3D:true, 
             scrollTrigger: {
             trigger: '#article',
             scrub:6,
-            start:'-120px',
+            start:'-150px',
             end:'+=50px',
+            onLeaveBack: self => self.disable()
+
         }})
-        .fromTo('.paragraph-1',{x:700},{x:0,
+        .fromTo('.paragraph-1',{x:700},{x:0,force3D:true,
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-120px',
+                start:'-150px',
                 end:'+=50px',
+                onLeaveBack: self => self.disable()
+
         }})
         .fromTo('.paragraph-2',{x:800},{
-            x:0,
+            x:0,force3D:true,
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-120px',
-                    end:'+=50px',
+                start:'-150px',
+                end:'+=50px',
+                onLeaveBack: self => self.disable()
+
         }})
         .fromTo('.paragraph-3',{x:900},{
-            x:0,
+            x:0,force3D:true,
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-120px',
+                start:'-150px',
                 end:'+=50px',
+                onLeaveBack: self => self.disable()
+
         }})
         
         }

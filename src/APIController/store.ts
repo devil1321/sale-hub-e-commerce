@@ -17,7 +17,7 @@ const store = createStore(
     reducers,
     initState,
     composeEnhancers(
-        applyMiddleware(...middleware)
+        applyMiddleware(thunk)
     )
     
 )

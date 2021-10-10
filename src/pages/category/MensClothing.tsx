@@ -27,7 +27,7 @@ const Electronics = () => {
                 <ProductsInnerHero products={productsArr.slice(0,3)}/>
                 <h2 className="title-clothes">Explore Our Shop</h2>
                 <div className="container-inner">
-                    {productsArr.map((product:ProductModel,index:number) => <Product key={index} {...product} />)}
+                    {productsArr.map((product:ProductModel,index:number) => <Product key={index} product={product} />)}
                 </div>
             </div>
         </div>

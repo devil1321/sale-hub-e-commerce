@@ -12,7 +12,7 @@ import Electronics from './pages/category/Electronics'
 import Jewlery from './pages/category/Jewelery'
 import MensClothing from './pages/category/MensClothing'
 import WomenClothing from './pages/category/WomenClothing'
-
+import NotFound from './pages/404'
 function App() {
   return (
     <div className="App">
@@ -29,6 +29,7 @@ function App() {
         <RouteWithLayout exact path={'/details-jewelery/:id'} component={Details} />
         <RouteWithLayout exact path={'/details-men\'s clothing/:id'} component={Details} />
         <RouteWithLayout exact path={'/details-women\'s clothing/:id'} component={Details} />
+        <RouteWithLayout exact path={'*'} component={NotFound} />
 
       
       </Switch>

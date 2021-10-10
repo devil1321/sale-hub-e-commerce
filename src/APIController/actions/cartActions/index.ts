@@ -1,22 +1,34 @@
 
 import { CartActions } from '../../action-types'
-import { Product } from '../../interfaces'
+import { Product as ProductModel} from '../../interfaces'
 
 
 interface AddToCart{
     type:CartActions.ADD_TO_CART,
-    payload:Product[]
+    payload:ProductModel[]
+   
 }
 
 interface RemoveFromCart{
     type:CartActions.REMOVE_FROM_CART,
-    payload:Product[]
+    payload:ProductModel[]
 }
-
+interface IncreaseCart{
+    type:CartActions.INCREASE_PRODUCT,
+    payload:ProductModel[]
+}
+interface DecreaseCart{
+    type:CartActions.DECREASE_PRODUCT,
+    payload:ProductModel[]
+}
 interface ClearCart{
     type:CartActions.CLEAR_CART,
-    payload:Product[]
+    payload:ProductModel[]
+}
+interface SetToal{
+    type:CartActions.SET_TOTAL,
+    payload:number
 }
 
-export type Action = AddToCart | RemoveFromCart | ClearCart
+export type Action = AddToCart | IncreaseCart | DecreaseCart | RemoveFromCart | ClearCart | SetToal
 

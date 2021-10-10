@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { productsActionsCreators } from '../APIController/action-creators/productsActions'
+import { cartActionsCreators } from '../APIController/action-creators/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { State } from '../APIController/reducers'
@@ -19,11 +20,12 @@ const Details = () => {
         name:string,
         rating:number
     }
-    
+    const actions = Object.assign({},productsActionsCreators,cartActionsCreators)
     const dispatch = useDispatch()
-    const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
+    const { getProduct,addToCart } = bindActionCreators(actions,dispatch)
     const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
     const { id, title, price, description, category, image, rating } = product
+    const [quantity,setQuantity] = useState<number>(1)
     const [fakeReviews,setFakeReviews] = useState<Review[]>([
         {
             review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
@@ -145,11 +147,11 @@ const Details = () => {
                             <h3>Quantity:</h3>
                             <div className="details__add-to-bag">
                                  <div className="details__quantity">
-                                     <div>-</div>
-                                     <div className="quantity">1</div>
-                                     <div>+</div>
+                                     <div  onClick={()=>{setQuantity(quantity - 1)}}>-</div>
+                                     <div className="quantity">{quantity}</div>
+                                     <div onClick={()=>{setQuantity(quantity + 1)}}>+</div>
                                  </div>
-                                <button>Add To Bag</button>
+                                <button onClick={(e)=>addToCart(e,product,quantity)}>Add To Bag</button>
                                 <button>Continue Shopping</button>
                             </div>
                         </div>
