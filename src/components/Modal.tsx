@@ -19,7 +19,7 @@ const Modal:React.FC<ModalProps> = ({product,setIsModal}) => {
         <div className="modal">
         <div className="modal__modal">
             <div className="modal__close-modal" onClick={()=>{setIsModal(false)}}>X</div>
-            <img src={image} alt="modal" />
+            <img  src={image} alt="modal" />
             <div className="modal__modal-text">
                 <h3>{title}</h3>
                 <h3>Price: {price}$</h3>                        

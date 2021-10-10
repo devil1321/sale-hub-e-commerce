@@ -18,10 +18,44 @@ const addToCart = (e:any,product:ProductModel,quantity:number) => (dispatch:Disp
     })
 }
 
-const removeFromCart = () => (dispatch:Dispatch<Action>) =>{}
-const increaseCart = () => (dispatch:Dispatch<Action>) =>{}
-const decreaseCart = () => (dispatch:Dispatch<Action>) =>{}
-const clearCart = () => (dispatch:Dispatch<Action>) =>{}
+const removeFromCart = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
+    e.preventDefault()
+    let tempCart:ProductModel[] = store.getState().cart.cart
+    tempCart = tempCart.filter(item => item.id !== id)
+    dispatch({
+        type:CartActions.REMOVE_FROM_CART,
+        payload:tempCart
+    })
+}
+const increaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
+    e.preventDefault()
+    let tempCart:ProductModel[] = store.getState().cart.cart
+    let product:any = tempCart.find(item => item.id === id)
+    let index = tempCart.indexOf(product)
+    tempCart[index].quantity += 1
+    dispatch({
+        type:CartActions.INCREASE_PRODUCT,
+        payload:tempCart
+    })
+}
+const decreaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
+    e.preventDefault()
+    let tempCart:ProductModel[] = store.getState().cart.cart
+    let product:any = tempCart.find(item => item.id === id)
+    let index = tempCart.indexOf(product)
+    tempCart[index].quantity -= 1
+    dispatch({
+        type:CartActions.DECREASE_PRODUCT,
+        payload:tempCart
+    })
+}
+
+const clearCart = () => (dispatch:Dispatch<Action>) =>{
+    dispatch({
+        type:CartActions.CLEAR_CART,
+        payload:[]
+    })
+}
 
 const setTotal = (cart:ProductModel[]) => (dispatch:Dispatch<Action>) =>{
     let total = 0
@@ -37,8 +71,8 @@ const setTotal = (cart:ProductModel[]) => (dispatch:Dispatch<Action>) =>{
 export const cartActionsCreators = {
     addToCart,
     removeFromCart,
-    increaseCart,
-    decreaseCart,
+    increaseCartProduct,
+    decreaseCartProduct,
     clearCart,
     setTotal
 }  
