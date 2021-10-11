@@ -28,7 +28,7 @@ const WomenClothing = () => {
             <CarouselClothes slides={slides} black />
             <div className="women__content">
                 <ProductsInnerHero products={products.slice(0,3)}/>
-                <h2 className="title-clothes">Explore Our Shop</h2>
+                <h2 className="title-clothes">Explore Women Clothes</h2>
                 <div className="container-inner">
                     {products.map((product:ProductModel,index:number) => <Product key={index} product={product} />)}
                 </div>
