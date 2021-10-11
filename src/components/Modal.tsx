@@ -14,7 +14,7 @@ type ModalProps = {
 
 const Modal:React.FC<ModalProps> = ({product,setIsModal}) => {
     const [quantity,setQuantity] = useState<number>(1)
-    const {id, image, title, price,inCart } = product
+    const {id, image, title, price,inCart,category } = product
     const dispatch = useDispatch()
     const { addToCart } = bindActionCreators(cartActionsCreators,dispatch)
     const [isInCart,setIsInCart] = useState<boolean>(false)
@@ -33,12 +33,13 @@ const Modal:React.FC<ModalProps> = ({product,setIsModal}) => {
             <div className="modal__modal-text">
                 <h3>{title}</h3>
                 <h3>Price: {price}$</h3>    
-                <div className="modal__sizes-wrapper">
-                    <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn active" id="S">S</div>
-                    <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="M">M</div>
-                    <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="L">L</div>
-                    <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="XL">XL</div>
-                </div>
+                {category !== 'electronics' 
+                &&  <div className="modal__sizes-wrapper">
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn active" id="S">S</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="M">M</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="L">L</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="modal__size-btn" id="XL">XL</div>
+                     </div>}
                 {!inCart 
                 ? <button onClick = {(e)=>{
                     addToCart(e,product,quantity,size)
