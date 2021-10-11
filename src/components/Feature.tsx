@@ -55,7 +55,7 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
                     return (
                     <div className={`feature__image ${index === 0 ? "active" : ""}`}>
                         <img src={product.image} onClick={(e)=>handleImage(e,product)}/>
-                    </div>s
+                    </div>
                 )
             })}
             </div>
