@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import { useDispatch } from 'react-redux'
 import { cartActionsCreators } from '../APIController/action-creators/cartActions'
+import { productsActionsCreators } from './../APIController/action-creators/productsActions';
 import { bindActionCreators } from 'redux'
 type CartItemProps = {
     item:ProductModel,
@@ -13,7 +14,8 @@ type CartItemProps = {
 const CartItem:React.FC<CartItemProps> = ({item}) => {
     const {id,category,image,title,quantity,total} = item
     const dispatch = useDispatch()
-    const {removeFromCart,clearCart} = bindActionCreators(cartActionsCreators,dispatch)
+    const actions = Object.assign({},cartActionsCreators,productsActionsCreators)
+    const {removeFromCart,clearCart,resetProducts} = bindActionCreators(actions,dispatch)
     return (
         <div className="cart__item">
             <div className="cart__item-inner">
@@ -30,7 +32,12 @@ const CartItem:React.FC<CartItemProps> = ({item}) => {
             <button className="cart__remove" onClick = {(e)=>{removeFromCart(e,id)}}>
                 <FontAwesomeIcon icon={faTrash} />
             </button>
-            <button onClick = {(e)=>{clearCart(e)}}>Clear Cart</button>
+            <button 
+            onClick = {(e)=>{
+                clearCart(e)
+                resetProducts()
+            }}>
+                Clear Cart</button>
         </div>
     )
 }

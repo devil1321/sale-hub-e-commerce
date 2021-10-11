@@ -42,8 +42,7 @@ export default (state = initData, action:Action) => {
         case CartActions.CLEAR_CART:
             return {
                 ...state,
-                products:action.payload,
-                cart:action.cart
+                cart:action.payload
             }
         default:
             return state

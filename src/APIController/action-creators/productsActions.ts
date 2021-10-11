@@ -49,9 +49,15 @@ const getProduct = (id:number) =>(dispatch:Dispatch<Action>):void =>{
 
 
 const resetProducts = () => (dispatch:Dispatch<Action>):void =>{
+    let products:ProductModel[] = store.getState().products.products
+    let tempProducts = [...products]
+    tempProducts.forEach(product =>{
+        product.inCart = false
+        product.quantity = 0
+    })
     dispatch({
         type:ProductActions.RESET_PRODUCTS,
-        payload:[]
+        payload:tempProducts
     })
 }
 const resetProduct = () => (dispatch:Dispatch<Action>):void =>{
@@ -77,10 +83,9 @@ const resetProduct = () => (dispatch:Dispatch<Action>):void =>{
         payload:product
     })
 }
-
 export const productsActionsCreators = {
     getProducts,
     getProduct,
     resetProducts,
-    resetProduct
+    resetProduct,
 }

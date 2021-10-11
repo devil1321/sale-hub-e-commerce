@@ -23,8 +23,7 @@ interface DecreaseCart{
 }
 interface ClearCart{
     type:CartActions.CLEAR_CART,
-    payload:ProductModel[],
-    cart:ProductModel[]
+    payload:ProductModel[]
 }
 interface SetToal{
     type:CartActions.SET_TOTAL,

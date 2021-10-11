@@ -68,8 +68,7 @@ const clearCart = (e:any) => (dispatch:Dispatch<Action>) =>{
     e.preventDefault()
     dispatch({
         type:CartActions.CLEAR_CART,
-        payload:[],
-        cart:[]
+        payload:[]
     })
 }
 
