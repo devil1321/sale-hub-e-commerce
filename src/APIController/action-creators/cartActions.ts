@@ -4,11 +4,12 @@ import { Dispatch } from 'redux'
 import { Product as ProductModel } from '../interfaces'
 import store from '../store'
 
-const addToCart = (e:any,product:ProductModel,quantity:number) => (dispatch:Dispatch<Action>) =>{
+const addToCart = (e:any,product:ProductModel,quantity:number,size:string) => (dispatch:Dispatch<Action>) =>{
     e.preventDefault()
     let tempCart = store.getState().cart.cart
     let tempNewCart:ProductModel[] = []
     let tempProduct:ProductModel = product
+    tempProduct.size = size
     tempProduct.quantity = quantity
     tempProduct.total = quantity * product.price
     tempProduct.inCart = true

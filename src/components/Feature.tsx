@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { cartActionsCreators } from '../APIController/action-creators/cartActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
+import { handleSize } from '../APIController/modules/modules'
 type FeatureProps = {
     images:any[],
     fromRight?:any
@@ -14,6 +15,7 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
     const dispatch = useDispatch()
     const { addToCart } = bindActionCreators(cartActionsCreators,dispatch)
     const [product,setProduct] = useState<any>(null)
+    const [size,setSize] = useState<string>("S")
 
     const handleImage = (e:any,image:ProductModel):void =>{
         const images = document.querySelectorAll('.feature__image')
@@ -21,6 +23,8 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
         e.target.parentElement.classList.add('active')
         setProduct(image)
     }
+
+
     useEffect(()=>{
         setProduct(images[0])
     },[images])
@@ -33,8 +37,16 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
                     <h3>Price: {product.price}$</h3>
                     <h3 >Description</h3>
                     <p>{product.description}</p>
+                    <h3>Price: {product.price}$</h3>    
+                    {product.category !== 'electronics' 
+                    && <div className="feature__sizes-wrapper">
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="feature__size-btn active" id="S">S</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="feature__size-btn" id="M">M</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="feature__size-btn" id="L">L</div>
+                        <div onClick={(e)=>{handleSize(e,setSize)}} className="feature__size-btn" id="XL">XL</div>
+                    </div>}
                     {!product.inCart 
-                    ? <button onClick={(e)=>{addToCart(e,product,product.quantity + 1)}}>Buy Now</button>
+                    ? <button onClick={(e)=>{addToCart(e,product,product.quantity + 1,size)}}>Buy Now</button>
                     : <button>In Cart <FontAwesomeIcon icon={faCartPlus} /></button>}
                 </div>
             </div>}

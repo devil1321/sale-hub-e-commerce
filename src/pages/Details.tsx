@@ -12,7 +12,7 @@ import { Product as ProductModel }  from '../APIController/interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-
+import { handleSize } from '../APIController/modules/modules'
 
 const Details = () => {
     
@@ -27,6 +27,7 @@ const Details = () => {
     const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
     const { id, title, price, description, category, image, inCart, rating } = product
     const [quantity,setQuantity] = useState<number>(1)
+    const [size,setSize] = useState<string>("S")
     const [fakeReviews,setFakeReviews] = useState<Review[]>([
         {
             review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
@@ -78,7 +79,6 @@ const Details = () => {
         tabs[index].classList.add('acti ve')
     }
     
-  
     useEffect(()=>{
         window.scrollTo(0,0)
         hanleAnimateHero()   
@@ -134,10 +134,10 @@ const Details = () => {
                         {category !== 'electronics' && <div className="details__sizes">
                             <h3>Sizes:</h3>
                             <div className="details__sizes-wrapper">
-                                <div className="details__size-btn active" id="s">S</div>
-                                <div className="details__size-btn" id="m">M</div>
-                                <div className="details__size-btn" id="l">L</div>
-                                <div className="details__size-btn" id="xl">XL</div>
+                                <div onClick={(e)=>{handleSize(e,setSize)}} className="details__size-btn active" id="S">S</div>
+                                <div onClick={(e)=>{handleSize(e,setSize)}}  className="details__size-btn" id="M">M</div>
+                                <div onClick={(e)=>{handleSize(e,setSize)}}  className="details__size-btn" id="L">L</div>
+                                <div onClick={(e)=>{handleSize(e,setSize)}}  className="details__size-btn" id="XL">XL</div>
                             </div>
                         </div>}
                          <div className="details__notes-field">
@@ -154,7 +154,7 @@ const Details = () => {
                                  </div>
                                 {inCart 
                                 ? <button>InCart <FontAwesomeIcon icon={faCartPlus} /></button>
-                                : <button onClick={(e)=>{addToCart(e,product,quantity)}}>Add To Bag</button>}
+                                : <button onClick={(e)=>{addToCart(e,product,quantity,size)}}>Add To Bag</button>}
                                 <Link to='/all'>
                                     <button>Continue Shopping</button>
                                 </Link>
