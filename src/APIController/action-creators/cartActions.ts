@@ -13,6 +13,10 @@ const addToCart = (e:any,product:ProductModel,quantity:number,size:string) => (d
     tempProduct.quantity = quantity
     tempProduct.total = quantity * product.price
     tempProduct.inCart = true
+    if(tempProduct.category == 'electronics'){
+        delete tempProduct['color']
+        delete tempProduct['size']
+    }
     tempNewCart = [...tempCart,tempProduct]
     dispatch({
         type:CartActions.ADD_TO_CART,
