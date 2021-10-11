@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Product as ProductModel } from '../APIController/interfaces'
@@ -85,12 +86,14 @@ const Homepage = () => {
         }})
         
         }
+
     useEffect(()=>{
         if(products.length === 0){
             getProducts()
         }
         animateBlog()
     },[])
+
     return (
         <div className="home">
             <CarouselClothes slides={slides}/>
@@ -98,23 +101,31 @@ const Homepage = () => {
                 <h2 className="title">Explore Collections</h2>
                 <div className="home__feature">
                 <div className="home__image">
-                    <img src='/women-2.jpg' alt="" />
+                    <Link to='/category/women`s Clothing'>
+                        <img src='/women-2.jpg' alt="" />
+                    </Link>
                     <button className="button">Explore Collection</button>
                     <button className="button">Women`s</button>
                 </div>
                 <div className="home__image-group">
                     <div className="home__image">
-                        <img src="/women-1.jpg" alt="" />
+                        <Link to='/category/jewelery'>
+                            <img src="/women-1.jpg" alt="" />
+                        </Link>
                         <button>Explore Collection</button>
                         <button>Jewelery</button>
                     </div>
                     <div className="home__image">
-                        <img src="/technology-3.jpg" alt="" /> 
+                        <Link to="/category/electronics">
+                            <img src="/technology-3.jpg" alt="" /> 
+                        </Link>
                         <button>Explore Collection</button>
                         <button>Electonics</button>
                     </div>
                     <div className="home__image">
-                        <img src="/mens-1.jpg" alt="" />
+                        <Link to="/category/men`s clothing">
+                            <img src="/mens-1.jpg" alt="" />
+                        </Link>
                         <button>Explore Collection</button>
                         <button>Men`s</button>
                     </div>
