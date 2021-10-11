@@ -5,8 +5,11 @@ export type Product = {
     description:string,
     category:string,
     image:string,
+    size:string,
+    color:string,
     quantity:number,
     total:number,
+    inCart:boolean,
     rating:{
         rate:number,
         count:number

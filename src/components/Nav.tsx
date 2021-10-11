@@ -34,7 +34,7 @@ const Nav = () => {
     }
 
     const handleCart = ():void =>{
-        let cart = document.querySelector('.cart')!
+        let cart = document.querySelector<HTMLDivElement>('.cart')!
         if(cart){
             if(cart.style.transform === 'translateX(100%)'){   
                 cart.style.transform = 'translateX(0%)'

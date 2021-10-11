@@ -20,7 +20,10 @@ const initData:InitData = {
         category:'',
         image:'',
         quantity:1,
+        size:'S',
+        color:'Black',
         total:0,
+        inCart:false,
         rating:{
             rate:0,
             count:0

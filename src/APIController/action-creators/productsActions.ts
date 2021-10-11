@@ -18,6 +18,9 @@ const getProducts = () => (dispatch:Dispatch<Action>):void => {
                     image:item.image,
                     quantity:1,
                     total:item.price,
+                    color:"Black",
+                    size:"S",
+                    inCart:false,
                     rating:{
                         rate:item.rating.rate,
                         count:item.rating.count
@@ -46,6 +49,9 @@ const getProduct = (id:number) =>(dispatch:Dispatch<Action>):void =>{
             image:item.image,
             quantity:1,
             total:item.price,
+            color:"Black",
+            size:"S",
+            inCart:false,
             rating:{
                 rate:item.rating.rate,
                 count:item.rating.count
@@ -72,6 +78,9 @@ const getCategory = (category:string) =>(dispatch:Dispatch<Action>) =>{
                     image:item.image,
                     quantity:1,
                     total:item.price,
+                    color:"Black",
+                    size:"S",
+                    inCart:false,
                     rating:{
                         rate:item.rating.rate,
                         count:item.rating.count
@@ -103,6 +112,9 @@ const resetProduct = () => (dispatch:Dispatch<Action>):void =>{
         image:'',
         quantity:1,
         total:0,
+        size:'S',
+        color:'Black',
+        inCart:false,
         rating:{
             rate:0,
             count:0

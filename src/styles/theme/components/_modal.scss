@@ -30,6 +30,8 @@
             text-align: center;
         }
         button {
+            font-weight: bold;
+            color: white;
             cursor: pointer;
             min-width: 100%;
             background-color: greenyellow;
@@ -46,6 +48,15 @@
                 }
             }
         }
+    }
+    &__inCart {
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        min-width: 100%;
+        background-color: greenyellow;
+        text-align: center;
+        padding: 10px 0px;
     }
     &__close-modal {
         cursor: pointer;

@@ -11,6 +11,7 @@ const addToCart = (e:any,product:ProductModel,quantity:number) => (dispatch:Disp
     let tempProduct:ProductModel = product
     tempProduct.quantity = quantity
     tempProduct.total = quantity * product.price
+    tempProduct.inCart = true
     tempNewCart = [...tempCart,tempProduct]
     dispatch({
         type:CartActions.ADD_TO_CART,
@@ -44,6 +45,9 @@ const decreaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
     let product:any = tempCart.find(item => item.id === id)
     let index = tempCart.indexOf(product)
     tempCart[index].quantity -= 1
+    if(tempCart[index].quantity < 0){
+        removeFromCart(e,id)
+    }
     dispatch({
         type:CartActions.DECREASE_PRODUCT,
         payload:tempCart
@@ -59,14 +63,17 @@ const clearCart = (e:any) => (dispatch:Dispatch<Action>) =>{
     })
 }
 
-const setTotal = (cart:ProductModel[]) => (dispatch:Dispatch<Action>) =>{
-    let total = 0
+const setTotals = (cart:ProductModel[],shipping:number) => (dispatch:Dispatch<Action>) =>{
+    let total = shipping
+    let quantity = 0
     cart.forEach(item =>{
         total += item.total
+        quantity += item.quantity
     })
     dispatch({
         type:CartActions.SET_TOTAL,
-        payload:total
+        payload:total,
+        quantity:quantity
     })
 }
 
@@ -76,5 +83,5 @@ export const cartActionsCreators = {
     increaseCartProduct,
     decreaseCartProduct,
     clearCart,
-    setTotal
+    setTotals
 }  

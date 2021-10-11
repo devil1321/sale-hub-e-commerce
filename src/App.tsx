@@ -12,6 +12,8 @@ import Electronics from './pages/category/Electronics'
 import Jewlery from './pages/category/Jewelery'
 import MensClothing from './pages/category/MensClothing'
 import WomenClothing from './pages/category/WomenClothing'
+import Checkout from './pages/Checkout'
+import Bag from './pages/Bag'
 import NotFound from './pages/404'
 function App() {
   return (
@@ -29,6 +31,10 @@ function App() {
         <RouteWithLayout exact path={'/details-jewelery/:id'} component={Details} />
         <RouteWithLayout exact path={'/details-men\'s clothing/:id'} component={Details} />
         <RouteWithLayout exact path={'/details-women\'s clothing/:id'} component={Details} />
+
+        <RouteWithLayout exact path={'/cart'} component={Bag} />
+        <RouteWithLayout exact path={'/checkout'} component={Checkout} />
+
         <RouteWithLayout exact path={'*'} component={NotFound} />
 
       
