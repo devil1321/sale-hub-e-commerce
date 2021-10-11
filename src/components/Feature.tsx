@@ -1,11 +1,18 @@
 import React,{useState,useEffect} from 'react'
-import { AnyIfEmpty } from 'react-redux'
 import { Product as ProductModel } from '../APIController/interfaces'
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { cartActionsCreators } from '../APIController/action-creators/cartActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 type FeatureProps = {
     images:any[],
     fromRight?:any
 }
+
 const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
+    const dispatch = useDispatch()
+    const { addToCart } = bindActionCreators(cartActionsCreators,dispatch)
     const [product,setProduct] = useState<any>(null)
 
     const handleImage = (e:any,image:ProductModel):void =>{
@@ -26,7 +33,9 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
                     <h3>Price: {product.price}$</h3>
                     <h3 >Description</h3>
                     <p>{product.description}</p>
-                    <button>Buy Now</button>
+                    {!product.inCart 
+                    ? <button onClick={(e)=>{addToCart(e,product,product.quantity + 1)}}>Buy Now</button>
+                    : <button>In Cart <FontAwesomeIcon icon={faCartPlus} /></button>}
                 </div>
             </div>}
             <div className={`feature__images  ${fromRight ? "fromRight" : ""}`}>

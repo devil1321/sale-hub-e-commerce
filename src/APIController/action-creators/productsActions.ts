@@ -3,6 +3,7 @@ import { ProductActions } from '../action-types'
 import { Dispatch } from 'redux'
 import { Action } from '../actions/productActions'
 import {Product as ProductModel} from '../interfaces'
+import store from '../store'
 const getProducts = () => (dispatch:Dispatch<Action>):void => {
     axios.get(`https://fakestoreapi.com/products`)
         .then(res => {
@@ -36,64 +37,15 @@ const getProducts = () => (dispatch:Dispatch<Action>):void => {
 }
 
 const getProduct = (id:number) =>(dispatch:Dispatch<Action>):void =>{
-    axios.get(`https://fakestoreapi.com/products/`+ id)
-    .then(res => {
-        let item:any = res.data
-        
-        let product:ProductModel = {
-            id:item.id,
-            title:item.title,
-            price:item.price,
-            description:item.description,
-            category:item.category,
-            image:item.image,
-            quantity:1,
-            total:item.price,
-            color:"Black",
-            size:"S",
-            inCart:false,
-            rating:{
-                rate:item.rating.rate,
-                count:item.rating.count
-            }
-        }
-        dispatch({
-            type: ProductActions.GET_PRODUCT,
-            payload: product
-        })
+    const products = store.getState().products.products
+    let product = products.filter(item => item.id === id)
+
+    dispatch({
+        type: ProductActions.GET_PRODUCT,
+        payload: product[0]
     })
 }
-const getCategory = (category:string) =>(dispatch:Dispatch<Action>) =>{
-    axios.get(`https://fakestoreapi.com/products/category/`+ category)
-        .then(res => {
-            let tempProducts:ProductModel[] = []
-            let response:any[] = res.data
-            response.map(item =>{
-                let product:ProductModel = {
-                    id:item.id,
-                    title:item.title,
-                    price:item.price,
-                    description:item.description,
-                    category:item.category,
-                    image:item.image,
-                    quantity:1,
-                    total:item.price,
-                    color:"Black",
-                    size:"S",
-                    inCart:false,
-                    rating:{
-                        rate:item.rating.rate,
-                        count:item.rating.count
-                    }
-                }
-                tempProducts.push(product)
-            dispatch({
-                type: ProductActions.GET_CATEGORY,
-                payload: tempProducts
-            })
-        })
-    })
-}
+
 
 
 const resetProducts = () => (dispatch:Dispatch<Action>):void =>{
@@ -129,7 +81,6 @@ const resetProduct = () => (dispatch:Dispatch<Action>):void =>{
 export const productsActionsCreators = {
     getProducts,
     getProduct,
-    getCategory,
     resetProducts,
     resetProduct
 }

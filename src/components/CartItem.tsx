@@ -27,7 +27,7 @@ const CartItem:React.FC<CartItemProps> = ({item}) => {
                     <img src={image} alt="p-image" />
                 </div>
             </div>
-            <button className="cart__remove">
+            <button className="cart__remove" onClick = {(e)=>{removeFromCart(e,id)}}>
                 <FontAwesomeIcon icon={faTrash} />
             </button>
             <button onClick = {(e)=>{clearCart(e)}}>Clear Cart</button>

@@ -10,7 +10,7 @@
     @include createFlex(row, center, flex-start, null);
     &__modal {
         position: relative;
-        top: 0px;
+        top: -20px;
         left: 0px;
         padding: $p-med 0px;
         margin-top: 50px;

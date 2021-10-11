@@ -10,9 +10,8 @@ import CarouselClothes from '../components/CarouselClothes'
 import Slider from '../components/Slider'
 const Homepage = () => {
 
-    const products = useSelector((state:State) => state.products.products)
+    const { products }:{ products:ProductModel[] } = useSelector((state:State) => state.products)
     const dispatch = useDispatch()
-    const productsArr:ProductModel[] = products
     const { getProducts } = bindActionCreators(productsActionsCreators,dispatch)
 
     const [slides,setSlides] = useState<string[]>([
@@ -87,7 +86,9 @@ const Homepage = () => {
         
         }
     useEffect(()=>{
-        getProducts()
+        if(products.length === 0){
+            getProducts()
+        }
         animateBlog()
     },[])
     return (
@@ -141,7 +142,7 @@ const Homepage = () => {
             <section className="testimonials">
                 <h2 className="title" id="welove">We Love</h2>
                 <div className="home__testimonials">
-                    <Slider items={productsArr}/>
+                    <Slider items={products}/>
                 </div>  
             </section>
         </div>

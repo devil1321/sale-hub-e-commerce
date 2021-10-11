@@ -11,6 +11,7 @@ import { State } from '../APIController/reducers'
 import { Product as ProductModel }  from '../APIController/interfaces'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const Details = () => {
@@ -24,7 +25,7 @@ const Details = () => {
     const dispatch = useDispatch()
     const { getProduct,addToCart } = bindActionCreators(actions,dispatch)
     const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
-    const { id, title, price, description, category, image, rating } = product
+    const { id, title, price, description, category, image, inCart, rating } = product
     const [quantity,setQuantity] = useState<number>(1)
     const [fakeReviews,setFakeReviews] = useState<Review[]>([
         {
@@ -151,8 +152,12 @@ const Details = () => {
                                      <div className="quantity">{quantity}</div>
                                      <div onClick={()=>{setQuantity(quantity + 1)}}>+</div>
                                  </div>
-                                <button onClick={(e)=>addToCart(e,product,quantity)}>Add To Bag</button>
-                                <button>Continue Shopping</button>
+                                {inCart 
+                                ? <button>InCart <FontAwesomeIcon icon={faCartPlus} /></button>
+                                : <button onClick={(e)=>{addToCart(e,product,quantity)}}>Add To Bag</button>}
+                                <Link to='/all'>
+                                    <button>Continue Shopping</button>
+                                </Link>
                             </div>
                         </div>
                     </form>

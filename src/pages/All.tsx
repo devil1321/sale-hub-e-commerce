@@ -8,8 +8,7 @@ import CarouselClothes from '../components/CarouselClothes'
 import { State } from '../APIController/reducers'
 const All:React.FC = () => {
 
-    const products:any = useSelector((state:State) => state.products)
-    const productsArr:ProductModel[] = products.products
+    const { products }:{ products:ProductModel[] } = useSelector((state:State) => state.products)
     const dispatch = useDispatch()
     const { getProducts } = bindActionCreators(productsActionsCreators,dispatch)
     const [slides,setSlides] = useState<string[]>([
@@ -19,7 +18,9 @@ const All:React.FC = () => {
     ])
     useEffect(()=>{
         window.scrollTo(0,0)
-        getProducts()        
+        if(products.length === null){
+            getProducts()        
+        }
     },[])
 
     return (
@@ -27,7 +28,7 @@ const All:React.FC = () => {
             <CarouselClothes slides = {slides}/>
             <h2 className="title-clothes">Explore Our Shop</h2>
             <div className="all__products">
-                {productsArr.map((product:ProductModel,index:number) => <Product key={index} product={product} />)}
+                {products.map((product:ProductModel,index:number) => <Product key={index} product={product} />)}
             </div>
         </div>
     )

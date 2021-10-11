@@ -8,10 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import Modal from '../components/Modal'
 type ProductProps = {
-    product:ProductModel
+    product:ProductModel,
+    disabled?:any
 }
 
-const Product:React.FC<ProductProps> = ({product}) => {
+const Product:React.FC<ProductProps> = ({product,disabled}) => {
     const {id,title,price,description,category,image,rating,inCart} = product
     const dispatch = useDispatch()
     const { getProduct } = bindActionCreators(productsActionsCreators,dispatch)
@@ -19,7 +20,7 @@ const Product:React.FC<ProductProps> = ({product}) => {
   
     return (
         <React.Fragment>
-            {isModal && <Modal product={product} setIsModal={setIsModal} /> }
+            {isModal && !disabled && <Modal product={product} setIsModal={setIsModal} /> }
             <div className="product">
                     <Link to={`/details-${category}/${id}`} onClick={() => {getProduct(id)}}>
                         <div className="product__image">

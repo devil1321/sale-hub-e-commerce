@@ -19,7 +19,7 @@ const initData:InitData = {
         description:'',
         category:'',
         image:'',
-        quantity:1,
+        quantity:0,
         size:'S',
         color:'Black',
         total:0,

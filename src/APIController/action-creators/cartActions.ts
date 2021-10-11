@@ -21,11 +21,16 @@ const addToCart = (e:any,product:ProductModel,quantity:number) => (dispatch:Disp
 
 const removeFromCart = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
     e.preventDefault()
+    const tempProducts:ProductModel[] = store.getState().products.products
+    const product:(ProductModel|any) = tempProducts.find(item => item.id === id)
+    let index = tempProducts.indexOf(product)
+    tempProducts[index].inCart = false
     let tempCart:ProductModel[] = store.getState().cart.cart
     tempCart = tempCart.filter(item => item.id !== id)
     dispatch({
         type:CartActions.REMOVE_FROM_CART,
-        payload:tempCart
+        payload:tempCart,
+        products:tempProducts
     })
 }
 const increaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{

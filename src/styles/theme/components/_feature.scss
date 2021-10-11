@@ -36,6 +36,7 @@
         }
         @include btn();
         button {
+            cursor: pointer;
             background-color: greenyellow;
             color: white;
             &:hover {
