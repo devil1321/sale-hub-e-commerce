@@ -73,6 +73,7 @@
         }
     }
     &__badge {
+        font-weight: bold;
         font-size: pxToRem(14);
         text-align: center;
         padding: $p-xs $p-sm;

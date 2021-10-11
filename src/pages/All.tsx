@@ -18,7 +18,7 @@ const All:React.FC = () => {
     ])
     useEffect(()=>{
         window.scrollTo(0,0)
-        if(products.length === null){
+        if(products.length === 0){
             getProducts()        
         }
     },[])

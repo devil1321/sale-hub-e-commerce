@@ -1,13 +1,15 @@
-import React,{ useState } from 'react'
+import React,{ useState , useEffect} from 'react'
 import { Product as ProductModel }  from '../../APIController/interfaces'
+import { useSelector,useDispatch } from 'react-redux'
 import { productsActionsCreators } from '../../APIController/action-creators/productsActions'
-import { useSelector } from 'react-redux'
-
+import {bindActionCreators} from 'redux'
 import CarouselClothes from '../../components/CarouselClothes'
 import { State } from '../../APIController/reducers'
 import Product from '../../components/Product'
 import ProductsInnerHero from '../../components/ProductsInnerHero'
 const Electronics = () => {
+    const dispatch = useDispatch()
+    const {getProducts} = bindActionCreators(productsActionsCreators,dispatch)
     let { products }:{ products:ProductModel[] } = useSelector((state:State) => state.products)
     products = products.filter(product => product.category === 'men\'s clothing')
     const [slides,setSlides] = useState<string[]>([
@@ -15,7 +17,11 @@ const Electronics = () => {
         'mens-2.jpg',
         'mens-3.jpg'
     ])
- 
+    useEffect(()=>{
+        if(products.length === 0){
+            getProducts()        
+        }
+    },[])
     return (
         <div className="mens">
             <CarouselClothes slides={slides} fix />

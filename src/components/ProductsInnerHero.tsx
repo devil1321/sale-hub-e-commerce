@@ -21,7 +21,7 @@ const ProductsInnerHero:React.FC<ProductsProps> = ({products}) => {
         <div className="product-i">
             {isModal && <Modal product={productModal} setIsModal={setIsModal} />}
             {products.map((product:ProductModel) => {
-                const {id,image,title,price,category} = product
+                const {id,image,title,price,category } = product
                 return (
                     <div className="product-i__wrapper">
                         <div className="product-i">
