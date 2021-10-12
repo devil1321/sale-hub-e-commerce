@@ -25,9 +25,10 @@ const Details = () => {
     const dispatch = useDispatch()
     const { getProduct,addToCart } = bindActionCreators(actions,dispatch)
     const { product }: { product:ProductModel } = useSelector((state:State) => state.products)
-    const { id, title, price, description, category, image, inCart, rating } = product
+    const { id, title, price, description, category, image, inCart,color, rating } = product
     const [quantity,setQuantity] = useState<number>(1)
     const [size,setSize] = useState<string>("S")
+    const [newColor,setNewColor] = useState<string>('black')
     const [fakeReviews,setFakeReviews] = useState<Review[]>([
         {
             review:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque tempora nulla voluptate laborum vitae sint, harum fugiat impedit quam.',
@@ -76,12 +77,15 @@ const Details = () => {
         btns.forEach(btn => btn.classList.remove('active'))
         btns[index].classList.add('active')
         tabs.forEach(tab=> tab.classList.remove('active'))
-        tabs[index].classList.add('acti ve')
+        tabs[index].classList.add('active')
     }
     
     useEffect(()=>{
         window.scrollTo(0,0)
         hanleAnimateHero()   
+        if(newColor === 'black' && color){
+            setNewColor(color)
+         }
     },[product])
 
     return (
@@ -122,13 +126,13 @@ const Details = () => {
                     <h3 className="details__text-stock">In Stock: <span className="italic">{rating.count}</span></h3>
                     <form action="">
                         <div className="details__colour-wrapper">
-                            <h3>Colours: <span className="italic">red</span> </h3>
-                            <div className="details__colours">
-                                <div className="details__colour-red" id="red"></div>
-                                <div className="details__colour-black" id="black"></div>
-                                <div className="details__colour-brown" id="brown"></div>
-                                <div className="details__colour-white" id="white"></div>
-                                <div className="details__colour-green" id="green"></div>
+                            <h3>Colour: <span className="italic">{newColor}</span> </h3>
+                            <div className="details__colour">
+                                <div className="details__colour-red" id="red" onClick={(e:any)=>{setNewColor(e.target.id)}} ></div>
+                                <div className="details__colour-black" id="black" onClick={(e:any)=>{setNewColor(e.target.id)}} ></div>
+                                <div className="details__colour-brown" id="brown" onClick={(e:any)=>{setNewColor(e.target.id)}} ></div>
+                                <div className="details__colour-white" id="white" onClick={(e:any)=>{setNewColor(e.target.id)}} ></div>
+                                <div className="details__colour-green" id="green" onClick={(e:any)=>{setNewColor(e.target.id)}} ></div>
                             </div>
                         </div>
                         {category !== 'electronics' && <div className="details__sizes">
@@ -154,7 +158,7 @@ const Details = () => {
                                  </div>
                                 {inCart 
                                 ? <button>InCart <FontAwesomeIcon icon={faCartPlus} /></button>
-                                : <button onClick={(e)=>{addToCart(e,product,quantity,size)}}>Add To Bag</button>}
+                                : <button onClick={(e)=>{addToCart(e,product,quantity,size,newColor)}}>Add To Bag</button>}
                                 <Link to='/all'>
                                     <button>Continue Shopping</button>
                                 </Link>

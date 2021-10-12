@@ -32,7 +32,7 @@ const CartItem:React.FC<CartItemProps> = ({item}) => {
             <button className="cart__remove" onClick = {(e)=>{removeFromCart(e,id)}}>
                 <FontAwesomeIcon icon={faTrash} />
             </button>
-            <button 
+            <button className="cart__clear-cart" 
             onClick = {(e)=>{
                 clearCart(e)
                 resetProducts()

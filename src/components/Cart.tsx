@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {Product as ProductModel} from '../APIController/interfaces'
 import CartItem from './CartItem'
 
@@ -18,6 +19,9 @@ const Cart:React.FC<CartProps> = ({cart,handleCart}) => {
             {cart.map((item:ProductModel,index:number)=>{
                 return <CartItem key={item.id} item = {item} />
             })}
+            <Link to="/bag" className="cart__bag">
+                <button onClick={()=>{handleCart()}}>Show Bag</button>
+            </Link>
         </div>
     )
 }

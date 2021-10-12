@@ -4,12 +4,13 @@ import { Dispatch } from 'redux'
 import { Product as ProductModel } from '../interfaces'
 import store from '../store'
 
-const addToCart = (e:any,product:ProductModel,quantity:number,size:string) => (dispatch:Dispatch<Action>) =>{
+const addToCart = (e:any,product:ProductModel,quantity:number,size:string,color:string) => (dispatch:Dispatch<Action>) =>{
     e.preventDefault()
     let tempCart = store.getState().cart.cart
     let tempNewCart:ProductModel[] = []
     let tempProduct:ProductModel = product
     tempProduct.size = size
+    tempProduct.color = color
     tempProduct.quantity = quantity
     tempProduct.total = quantity * product.price
     tempProduct.inCart = true
@@ -54,12 +55,23 @@ const decreaseCartProduct = (e:any,id:number) => (dispatch:Dispatch<Action>) =>{
     let tempCart:ProductModel[] = store.getState().cart.cart
     let product:any = tempCart.find(item => item.id === id)
     let index = tempCart.indexOf(product)
-    tempCart[index].quantity -= 1
-    if(tempCart[index].quantity < 0){
-        removeFromCart(e,id)
+    if(tempCart[index].quantity > 1){
+        tempCart[index].quantity -= 1
+        dispatch({
+            type:CartActions.DECREASE_PRODUCT,
+            payload:tempCart
+        })
     }
+ 
+}
+const handleColour = (e:any,id:number,color:string) => (dispatch:Dispatch<Action>) =>{
+    e.preventDefault()
+    let tempCart:ProductModel[] = store.getState().cart.cart
+    let product:any = tempCart.find(item => item.id === id)
+    let index = tempCart.indexOf(product)
+    tempCart[index].color = color
     dispatch({
-        type:CartActions.DECREASE_PRODUCT,
+        type:CartActions.HANDLE_COLOR,
         payload:tempCart
     })
 }
@@ -91,6 +103,7 @@ export const cartActionsCreators = {
     removeFromCart,
     increaseCartProduct,
     decreaseCartProduct,
+    handleColour,
     clearCart,
     setTotals
 }  

@@ -1,1 +1,90 @@
-.bag {}
+.footer {
+    margin-top: 50px !important;
+}
+
+.bag {
+    &__title {
+        margin: 100px 0px 20px;
+        text-align: center;
+        text-decoration: underline;
+        color: yellowgreen;
+    }
+    &__subtitle {
+        margin: 0px;
+        text-align: center;
+        color: orangered;
+        font-size: pxToRem(40)
+    }
+    &__items {
+        padding: 10px 50px;
+        @include createFlex(row, space-between, center, wrap);
+    }
+    &__item {
+        width: 100%;
+        height: 230px;
+        border-bottom: 1px solid $gray;
+        @include createFlex(row, flex-start, center, null);
+        h3 {
+            margin-bottom: 5px;
+            text-decoration: underline;
+        }
+        p {
+            margin: 5px 0px;
+        }
+        img {
+            margin-right: 15px;
+            height: 80%;
+        }
+        span {
+            font-weight: bold
+        }
+        &-color {
+            margin-left: 5px;
+            height: 20px;
+            width: 40px;
+        }
+    }
+    &__color-field {
+        @include createFlex(row, flex-start, center, null);
+    }
+    &__quantity {
+        @include createFlex(row, flex-start, center, null);
+        div:nth-of-type(2) {
+            min-width: 150px;
+            max-width: 150px;
+            border-left: 0px;
+            border-right: 0px;
+        }
+        div {
+            min-width: 50px;
+            max-width: 50px;
+            text-align: center;
+            width: 15%;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 0px;
+            padding: 5px;
+            border: 1px solid $gray;
+            transition: all 0.3s ease-in-out;
+            &:hover,
+            &.active {
+                color: white;
+                background-color: black;
+            }
+        }
+    }
+    &__summary {
+        padding: 0px 50px;
+        width: 200px;
+        margin-left: auto;
+        @include btn();
+        button {
+            width: 200px;
+            color: white;
+            background-color: yellowgreen;
+            &:hover {
+                background-color: green;
+            }
+        }
+    }
+}

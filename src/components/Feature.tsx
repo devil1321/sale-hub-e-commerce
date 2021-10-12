@@ -46,7 +46,7 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
                         <div onClick={(e)=>{handleSize(e,setSize)}} className="feature__size-btn" id="XL">XL</div>
                     </div>}
                     {!product.inCart 
-                    ? <button onClick={(e)=>{addToCart(e,product,product.quantity + 1,size)}}>Buy Now</button>
+                    ? <button onClick={(e)=>{addToCart(e,product,product.quantity + 1,size,'black')}}>Buy Now</button>
                     : <button>In Cart <FontAwesomeIcon icon={faCartPlus} /></button>}
                 </div>
             </div>}

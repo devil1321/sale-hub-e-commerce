@@ -1,233 +1,260 @@
-        .details {
-            min-height: 100vh;
-            h3 {
-                text-transform: capitalize;
+.details {
+    min-height: 100vh;
+    h3 {
+        text-transform: capitalize;
+    }
+    &__hero {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        overflow: hidden;
+        height: 500px;
+    }
+    &__hero-text {
+        width: 40%;
+        height: 100%;
+        padding: 100px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        color: white;
+        overflow: hidden;
+        &:hover {
+            .details__lens {
+                opacity: 0;
             }
-            &__hero {
-                position: relative;
-                top: 0px;
-                left: 0px;
-                overflow: hidden;
-                height: 500px;
+        }
+        h1,
+        h3 {
+            margin: 10px 0px 20px;
+        }
+        h1 {
+            font-size: pxToRem(60)
+        }
+        h3 {
+            font-size: pxToRem(30)
+        }
+        @include btn();
+    }
+    &__content {
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+        top: -100px;
+        left: 0px;
+        padding: 100px $p-lg 0px;
+        background-color: white;
+        @include createFlex(row, space-between, center, null);
+    }
+    &__image {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 45%;
+        background-repeat: no-repeat;
+        img {
+            width: 100%;
+        }
+    }
+    &__text {
+        width: 45%
+    }
+    &__price {
+        @include createFlex(row, flex-start, center, null);
+        svg {
+            color: yellow;
+        }
+    }
+    &__icons {
+        margin-left: 10px;
+    }
+    &__sizes {
+        @include createFlex(row, flex-start, center, null);
+    }
+    &__sizes-wrapper {
+        margin-left: 10px;
+        @include createFlex(row, flex-start, center, null);
+    }
+    &__size-btn {
+        cursor: pointer;
+        font-weight: 500;
+        margin: 0px 2px;
+        padding: 5px 10px;
+        box-shadow: 0px 0px 1px black;
+        transition: all 0.3s ease-in-out;
+        &:hover,
+        &.active {
+            color: white;
+            background-color: black;
+        }
+    }
+    &__colour {
+        @include createFlex(row, flex-start, center, wrap);
+        background-color: white;
+        div {
+            margin: 0px 3px;
+            height: 25px;
+            width: 25px;
+            border-radius: 100%;
+        }
+        &-red {
+            background-color: red;
+        }
+        &-black {
+            background-color: black;
+        }
+        &-brown {
+            background-color: brown;
+        }
+        &-white {
+            background-color: #dddcdc;
+        }
+        &-green {
+            background-color: green;
+        }
+    }
+    &__notes-field {
+        h3 {
+            margin: 2px 0px;
+        }
+        textarea {
+            padding: 8px;
+            border: 0px;
+            box-shadow: 0px 0px 1px black;
+            &::placeholder {
+                font-style: italic;
             }
-            &__hero-text {
-                width: 40%;
-                height: 100%;
-                padding: 100px;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                color: white;
-                overflow: hidden;
+            &:hover {
+                box-shadow: 0px 0px 2px blue;
+            }
+            &:active,
+            &:focus {
+                outline: none;
+                border: 0px;
+                box-shadow: 0px 0px 2px blue;
+            }
+        }
+    }
+    &__add-to-bag {
+        margin: 5px 0px 20px;
+        @include createFlex(row, space-between, center, null);
+        button {
+            cursor: pointer;
+            padding: 11px 20px;
+            min-width: 30%;
+            border: 0px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            background-color: greenyellow;
+            color: white;
+            &:hover {
+                background-color: green;
+            }
+            &:nth-of-type(2) {
+                background-color: orange;
                 &:hover {
-                    .details__lens {
-                        opacity: 0;
-                    }
+                    background-color: orangered;
                 }
-                h1,
-                h3 {
-                    margin: 10px 0px 20px;
-                }
-                h1 {
-                    font-size: pxToRem(60)
-                }
-                h3 {
-                    font-size: pxToRem(30)
-                }
-                @include btn();
             }
-            &__content {
-                width: 90%;
-                margin: 0 auto;
-                position: relative;
-                z-index: 2;
-                top: -100px;
-                left: 0px;
-                padding: 100px $p-lg 0px;
-                background-color: white;
-                @include createFlex(row, space-between, center, null);
+            &:active,
+            &:focus {
+                outline: none;
+                border: 0px;
             }
-            &__image {
-                position: relative;
-                top: 0px;
-                left: 0px;
-                width: 45%;
-                background-repeat: no-repeat;
-                img {
+        }
+    }
+    &__quantity {
+        width: 30%;
+        @include createFlex(row, flex-start, center, null);
+        div:nth-of-type(2) {
+            width: 70%;
+            border-left: 0px;
+            border-right: 0px;
+        }
+        div {
+            text-align: center;
+            width: 15%;
+            cursor: pointer;
+            font-weight: 500;
+            margin: 0px;
+            padding: 10px;
+            border: 1px solid $gray;
+            transition: all 0.3s ease-in-out;
+            &:hover,
+            &.active {
+                color: white;
+                background-color: black;
+            }
+        }
+    }
+    &__tabs {
+        padding: 0px $p-sm;
+    }
+    &__tabs-nav {
+        padding: 10px 20px;
+        margin: 20px 0px;
+        list-style-type: none;
+        border-bottom: 1px solid $gray;
+        @include createFlex(row, flex-start, center, null);
+        li {
+            padding: 10px 20px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            margin: 0px 10px;
+            &.active {
+                &:before {
+                    content: '';
                     width: 100%;
-                }
-            }
-            &__text {
-                width: 45%
-            }
-            &__price {
-                @include createFlex(row, flex-start, center, null);
-                svg {
-                    color: yellow;
-                }
-            }
-            &__icons {
-                margin-left: 10px;
-            }
-            &__sizes {
-                @include createFlex(row, flex-start, center, null);
-            }
-            &__sizes-wrapper {
-                margin-left: 10px;
-                @include createFlex(row, flex-start, center, null);
-            }
-            &__size-btn {
-                cursor: pointer;
-                font-weight: 500;
-                margin: 0px 2px;
-                padding: 5px 10px;
-                box-shadow: 0px 0px 1px black;
-                transition: all 0.3s ease-in-out;
-                &:hover,
-                &.active {
-                    color: white;
-                    background-color: black;
-                }
-            }
-            &__notes-field {
-                h3 {
-                    margin: 2px 0px;
-                }
-                textarea {
-                    padding: 8px;
-                    border: 0px;
-                    box-shadow: 0px 0px 1px black;
-                    &::placeholder {
-                        font-style: italic;
-                    }
-                    &:hover {
-                        box-shadow: 0px 0px 2px blue;
-                    }
-                    &:active,
-                    &:focus {
-                        outline: none;
-                        border: 0px;
-                        box-shadow: 0px 0px 2px blue;
-                    }
-                }
-            }
-            &__add-to-bag {
-                margin: 5px 0px 20px;
-                @include createFlex(row, space-between, center, null);
-                button {
-                    cursor: pointer;
-                    padding: 11px 20px;
-                    min-width: 30%;
-                    border: 0px;
-                    font-weight: bold;
-                    transition: all 0.3s ease-in-out;
-                    background-color: greenyellow;
-                    color: white;
-                    &:hover {
-                        background-color: green;
-                    }
-                    &:nth-of-type(2) {
-                        background-color: orange;
-                        &:hover {
-                            background-color: orangered;
-                        }
-                    }
-                    &:active,
-                    &:focus {
-                        outline: none;
-                        border: 0px;
-                    }
-                }
-            }
-            &__quantity {
-                width: 30%;
-                @include createFlex(row, flex-start, center, null);
-                div:nth-of-type(2) {
-                    width: 70%;
-                }
-                div {
-                    text-align: center;
-                    width: 15%;
-                    cursor: pointer;
-                    font-weight: 500;
-                    margin: 0px;
-                    padding: 10px;
-                    border: 1px solid $gray;
-                    transition: all 0.3s ease-in-out;
-                    &:hover,
-                    &.active {
-                        color: white;
-                        background-color: black;
-                    }
-                }
-            }
-            &__tabs {
-                padding: 0px $p-sm;
-            }
-            &__tabs-nav {
-                padding: 10px 20px;
-                margin: 20px 0px;
-                list-style-type: none;
-                border-bottom: 1px solid $gray;
-                @include createFlex(row, flex-start, center, null);
-                li {
-                    padding: 10px 20px;
-                    position: relative;
-                    top: 0px;
+                    position: absolute;
                     left: 0px;
-                    margin: 0px 10px;
-                    &.active {
-                        &:before {
-                            content: '';
-                            width: 100%;
-                            position: absolute;
-                            left: 0px;
-                            bottom: -11px;
-                            border-bottom: 2px solid black;
-                            transition: all 1s ease-in-out;
-                            animation: fadeIn 0.5s ease-in-out;
-                        }
-                    }
-                }
-            }
-            &__tab {
-                display: none;
-                padding: $p-med $p-lg;
-                animation: fadeIn 1s ease-in-out;
-                &.active {
-                    display: block;
-                }
-            }
-            &__review {
-                padding: 5px 10px;
-                margin: 10px 0px;
-                background-color: #f5f5f5;
-                h3 {
-                    margin: 3px 0px;
-                }
-                svg {
-                    margin-right: 5px;
-                    color: yellow;
-                }
-            }
-            &__suspense {
-                @include createFlex(column, center, center, null);
-                h2 {
-                    width: 100%;
-                    text-align: center;
-                    margin: 100px 0px 20px;
-                    font-size: pxToRem(40);
-                }
-                @include btn();
-                button {
-                    cursor: pointer;
-                    color: white;
-                    background-color: greenyellow;
-                    margin: 0px 0px 100px;
-                    transition: all 0.3s ease-in-out;
-                    &:hover {
-                        background-color: green;
-                    }
+                    bottom: -11px;
+                    border-bottom: 2px solid black;
+                    transition: all 1s ease-in-out;
+                    animation: fadeIn 0.5s ease-in-out;
                 }
             }
         }
+    }
+    &__tab {
+        display: none;
+        padding: $p-med $p-lg;
+        animation: fadeIn 1s ease-in-out;
+        &.active {
+            display: block;
+        }
+    }
+    &__review {
+        padding: 5px 10px;
+        margin: 10px 0px;
+        background-color: #f5f5f5;
+        h3 {
+            margin: 3px 0px;
+        }
+        svg {
+            margin-right: 5px;
+            color: yellow;
+        }
+    }
+    &__suspense {
+        @include createFlex(column, center, center, null);
+        h2 {
+            width: 100%;
+            text-align: center;
+            margin: 100px 0px 20px;
+            font-size: pxToRem(40);
+        }
+        @include btn();
+        button {
+            cursor: pointer;
+            color: white;
+            background-color: greenyellow;
+            margin: 0px 0px 100px;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                background-color: green;
+            }
+        }
+    }
+}

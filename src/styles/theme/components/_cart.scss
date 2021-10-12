@@ -52,7 +52,7 @@
         padding: 5px 20px;
         width: 100%;
         color: white;
-        background-color: rgb(202, 202, 71);
+        background-color: red;
         border: 0px;
         outline: none;
         @include createFlex(row, center, center, null);
@@ -62,13 +62,23 @@
         svg {
             color: white;
         }
-        &:last-of-type {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            width: 90%;
-            background-color: red;
-            transform: translateX(-50%)
+    }
+    &__bag {
+        position: absolute;
+        bottom: 90px;
+        left: 50%;
+        width: 90%;
+        transform: translateX(-50%);
+        button {
+            background-color: greenyellow;
         }
+    }
+    &__clear-cart {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        width: 90% !important;
+        background-color: red !important;
+        transform: translateX(-50%)
     }
 }
