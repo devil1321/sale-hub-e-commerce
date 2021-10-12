@@ -62,3 +62,17 @@ $breakpoints-down:("small":"39.9375em", "sm-med":"33.75em", "medium-sm":"63em", 
         }
     }
 }
+
+@mixin checkoutMessages() {
+    height: 46vh;
+    @include createFlex(column, center, center, null);
+    @include btn();
+    button {
+        color: white;
+        cursor: pointer;
+        background-color: rgb(128, 133, 119);
+        &:hover {
+            background-color: green;
+        }
+    }
+}

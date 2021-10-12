@@ -15,6 +15,8 @@ import WomenClothing from './pages/category/WomenClothing'
 import Checkout from './pages/Checkout'
 import Bag from './pages/Bag'
 import NotFound from './pages/404'
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
 function App() {
   return (
     <div className="App">
@@ -32,8 +34,10 @@ function App() {
         <RouteWithLayout exact path={'/details-men\'s clothing/:id'} component={Details} />
         <RouteWithLayout exact path={'/details-women\'s clothing/:id'} component={Details} />
 
-        <RouteWithLayout exact path={'/cart'} component={Bag} />
+        <RouteWithLayout exact path={'/bag'} component={Bag} />
         <RouteWithLayout exact path={'/checkout'} component={Checkout} />
+        <RouteWithLayout exact path={'/success'} component={Success} />
+        <RouteWithLayout exact path={'/cancel'} component={Cancel} />
 
         <RouteWithLayout exact path={'*'} component={NotFound} />
 

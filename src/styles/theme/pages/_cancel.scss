@@ -1,0 +1,6 @@
+.cancel {
+    h1 {
+        color: red;
+    }
+    @include checkoutMessages();
+}

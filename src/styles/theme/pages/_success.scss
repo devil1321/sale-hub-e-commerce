@@ -1,0 +1,6 @@
+.success {
+    h1 {
+        color: yellowgreen;
+    }
+    @include checkoutMessages();
+}
