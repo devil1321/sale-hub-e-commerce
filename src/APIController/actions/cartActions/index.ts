@@ -21,6 +21,10 @@ interface DecreaseCart{
     type:CartActions.DECREASE_PRODUCT,
     payload:ProductModel[]
 }
+interface HandleColor{
+    type:CartActions.HANDLE_COLOR,
+    payload:ProductModel[]
+}
 interface ClearCart{
     type:CartActions.CLEAR_CART,
     payload:ProductModel[]
@@ -31,5 +35,5 @@ interface SetToal{
     quantity:number
 }
 
-export type Action = AddToCart | IncreaseCart | DecreaseCart | RemoveFromCart | ClearCart | SetToal
+export type Action = AddToCart | IncreaseCart | DecreaseCart | RemoveFromCart| HandleColor | ClearCart | SetToal
 

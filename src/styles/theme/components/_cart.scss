@@ -1,5 +1,4 @@
 .cart {
-    overflow-y: scroll;
     padding: 20px;
     width: 300px;
     height: 100vh;
@@ -10,12 +9,48 @@
     box-shadow: 0px 10px 10px rgb(243, 243, 243);
     transform: translateX(100%);
     transition: all 1s ease-in-out;
+     ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+    }
+     ::-webkit-scrollbar-button {
+        width: 0px;
+        height: 0px;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: #e1e1e1;
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+     ::-webkit-scrollbar-thumb:hover {
+        background: #ffffff;
+    }
+     ::-webkit-scrollbar-thumb:active {
+        background: #ffffff;
+    }
+     ::-webkit-scrollbar-track {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        background: #666666;
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+     ::-webkit-scrollbar-track:hover {
+        background: #666666;
+    }
+     ::-webkit-scrollbar-track:active {
+        background: #333333;
+    }
+     ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
     i {
         cursor: pointer;
-        position: relative;
-        top: -10px;
-        left: 0px;
         font-size: pxToRem(30);
+    }
+    &__items {
+        height: calc(100vh - 150px);
+        overflow-y: scroll;
     }
     &__item {
         margin: 5px 0px;
