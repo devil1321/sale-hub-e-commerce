@@ -84,17 +84,21 @@ const clearCart = (e:any) => (dispatch:Dispatch<Action>) =>{
     })
 }
 
-const setTotals = (cart:ProductModel[],shipping:number) => (dispatch:Dispatch<Action>) =>{
-    let total = shipping
-    let quantity = 0
+const setTotal = (cart:ProductModel[],shipping:number) => (dispatch:Dispatch<Action>) =>{
+    const cart = store.getState().cart.cart
+    let total = 0
+    if(cart.length === 0){
+        total -= shipping
+    }else{
+        shipping = 20
+    }
     cart.forEach(item =>{
-        total += item.total
-        quantity += item.quantity
+        total += item.total * item.quantity
     })
+    total+=shipping
     dispatch({
         type:CartActions.SET_TOTAL,
-        payload:total,
-        quantity:quantity
+        payload:total
     })
 }
 
@@ -105,5 +109,5 @@ export const cartActionsCreators = {
     decreaseCartProduct,
     handleColour,
     clearCart,
-    setTotals
+    setTotal
 }  

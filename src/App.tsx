@@ -38,7 +38,7 @@ function App() {
         <RouteWithLayout exact path={'/checkout'} component={Checkout} />
         <RouteWithLayout exact path={'/success'} component={Success} />
         <RouteWithLayout exact path={'/cancel'} component={Cancel} />
-
+        
         <RouteWithLayout exact path={'*'} component={NotFound} />
 
       

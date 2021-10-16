@@ -16,7 +16,8 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
     const { addToCart } = bindActionCreators(cartActionsCreators,dispatch)
     const [product,setProduct] = useState<any>(null)
     const [size,setSize] = useState<string>("S")
-
+    const [isSet,setIsSet] = useState(false)
+    const [isLoad,setIsLoad] = useState(false)
     const handleImage = (e:any,image:ProductModel):void =>{
         const images = document.querySelectorAll('.feature__image')
         images.forEach(img => img.classList.remove('active'))
@@ -26,8 +27,12 @@ const Feature:React.FC<FeatureProps> = ({images,fromRight}) => {
 
 
     useEffect(()=>{
-        setProduct(images[0])
-    },[images])
+        if(!isSet && isLoad){
+            setProduct(images[0])
+            setIsSet(true)
+        }
+        setIsLoad(true)
+    },[images,isSet])
     return (
         <div className="feature">
             {product && <div className={`feature__product ${fromRight ? "fromRight" : ""}`}>

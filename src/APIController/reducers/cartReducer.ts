@@ -5,12 +5,14 @@ import { totalmem } from 'os'
 
 type CartData = {
     cart:ProductModel[],
-    total:number
+    total:number,
+    shipping:number
 }
 
 const initData:CartData = {
     cart:[],
-    total:0
+    total:0,
+    shipping:20
 }
 
 
@@ -43,6 +45,11 @@ export default (state = initData, action:Action) => {
             return {
                 ...state,
                 cart:action.payload
+            }
+        case CartActions.SET_TOTAL:
+            return {
+                ...state,
+                total:action.payload
             }
         default:
             return state

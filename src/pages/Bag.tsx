@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { cartActionsCreators } from '../APIController/action-creators/cartActions'
@@ -9,7 +9,11 @@ import BagItem from '../components/BagItem'
 
 const Bag = () => {
     const dispatch = useDispatch()
-    const { cart, total }:{ cart:ProductModel[],total:number } = useSelector((state:State) => state.cart)
+    const { cart, total, shipping }:{ cart:ProductModel[],total:number, shipping:number } = useSelector((state:State) => state.cart)
+    const { setTotal } = bindActionCreators(cartActionsCreators,dispatch)
+    useEffect(()=>{
+        setTotal(cart,shipping)
+    },[cart.length])
     return (
         <div className="bag">
             <h1 className="bag__title">Get free shipping for purchases over 599$</h1>
@@ -19,7 +23,7 @@ const Bag = () => {
             </div>
             <div className="bag__summary">
                 <h2>Total:{total}$</h2>
-                <h3>Shipping: 20$</h3>
+                <h3>Shipping: {cart.length === 0 ? 0 : shipping}$</h3>
                 <button>Pay</button>
             </div>
         </div>

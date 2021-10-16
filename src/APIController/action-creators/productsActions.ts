@@ -17,7 +17,7 @@ const getProducts = () => (dispatch:Dispatch<Action>):void => {
                     description:item.description,
                     category:item.category,
                     image:item.image,
-                    quantity:1,
+                    quantity:0,
                     total:item.price,
                     color:"Black",
                     size:"S",

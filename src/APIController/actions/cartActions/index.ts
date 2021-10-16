@@ -31,8 +31,7 @@ interface ClearCart{
 }
 interface SetToal{
     type:CartActions.SET_TOTAL,
-    payload:number,
-    quantity:number
+    payload:number
 }
 
 export type Action = AddToCart | IncreaseCart | DecreaseCart | RemoveFromCart| HandleColor | ClearCart | SetToal
