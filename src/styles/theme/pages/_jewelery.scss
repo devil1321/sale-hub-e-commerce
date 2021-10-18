@@ -1,10 +1,17 @@
 .jewelery {
+    .carousel__slide-1-text {
+        @include breakpoint-down(small) {
+            bottom: 100px !important;
+        }
+    }
+    .carousel__slide-2-text {
+        @include breakpoint-down(small) {
+            bottom: 100px !important;
+        }
+    }
     .carousel__slide-3-text {
-        h2,
-        h3,
-        h6,
-        p {
-            color: black;
+        @include breakpoint-down(small) {
+            bottom: 100px !important;
         }
     }
     .feature__images {

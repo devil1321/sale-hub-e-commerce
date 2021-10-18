@@ -2,6 +2,12 @@
     overflow: hidden;
     height: 90vh;
     margin-bottom: 100px;
+    @include breakpoint-down(medium) {
+        height: 37vh;
+    }
+    @media(max-device-width:1366px) and (max-device-height:1024px) and (orientation:landscape) {
+        height: 68vh;
+    }
     &__slide-1,
     &__slide-2,
     &__slide-3 {
@@ -12,12 +18,18 @@
         img {
             width: 100%;
             animation: scale 28s ease-in-out;
+            @include breakpoint-down(small) {
+                width: 150%;
+            }
         }
         &-text {
             overflow: hidden;
             position: absolute;
             bottom: 150px;
             left: 50px;
+            @include breakpoint-down(small) {
+                bottom: 50px;
+            }
             &.fix {
                 bottom: 350px;
             }
@@ -31,19 +43,61 @@
             }
             h6 {
                 font-size: pxToRem(30);
+                @include breakpoint-down(medium) {
+                    font-size: pxToRem(20);
+                }
+                @include breakpoint-down(small) {
+                    font-size: pxToRem(13);
+                }
             }
             h2 {
                 font-size: pxToRem(70);
+                @include breakpoint-down(medium) {
+                    font-size: pxToRem(40);
+                }
+                @include breakpoint-down(small) {
+                    font-size: pxToRem(20);
+                }
             }
             h3 {
                 font-size: pxToRem(100);
                 font-weight: bold;
+                @include breakpoint-down(medium) {
+                    font-size: pxToRem(80);
+                }
+                @include breakpoint-down(small) {
+                    font-size: pxToRem(40);
+                }
             }
             p {
                 color: white;
                 font-weight: bold;
             }
             @include btn();
+        }
+    }
+    .carousel__slide-1-text {
+        @include breakpoint-down(medium) {
+            bottom: 100px;
+        }
+        @include breakpoint-down(medium-sm) {
+            bottom: 70px;
+        }
+    }
+    .carousel__slide-2-text {
+        @include breakpoint-down(medium) {
+            bottom: 0px !important;
+        }
+        @include breakpoint-down(medium-sm) {
+            bottom: 70px !important;
+        }
+    }
+    .carousel__slide-3-text {
+        @include breakpoint-down(medium) {
+            bottom: 200px !important;
+        }
+        @include breakpoint-down(medium-sm) {
+            bottom: 50px !important;
         }
     }
 }

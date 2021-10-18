@@ -13,12 +13,34 @@
     box-shadow: 0px 10px 10px rgb(243, 243, 243);
     transition: all 1s ease;
     @include createFlex(row, space-between, center, null);
+    @include breakpoint-down(medium-sm) {
+        padding: 0px $p-sm;
+    }
+    @include breakpoint-down(small) {
+        max-height: 60px;
+    }
     &__navbar {
         list-style-type: none;
         padding: $p-zero;
         margin: $m-zero;
         min-width: 15%;
+        height: 100%;
         @include createFlex(row, space-between, center, null);
+        @include breakpoint-down(small) {
+            overflow: hidden;
+            display: block;
+            padding-left: $p-med;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            height: 0%;
+            background-color: white;
+            opacity: 0.9;
+            box-shadow: 0px 0px 150px inset #f1f1f1, 0px 0px 20px #f1f1f1;
+            transition: height 500ms ease-in-out;
+        }
     }
     &__item {
         cursor: pointer;
@@ -26,6 +48,40 @@
         top: 0px;
         left: 0px;
         margin-right: $m-sm;
+        &.sm {
+            display: none;
+            @include breakpoint-down(small) {
+                display: block;
+                visibility: visible;
+                ul {
+                    margin: 0px;
+                    padding: 0px;
+                    list-style-type: none;
+                    li {
+                        margin: 5px 0px;
+                        padding: 5px 9px 5px 25px;
+                        position: relative;
+                        top: 0px;
+                        left: -9px;
+                        width: calc(100% + 9px);
+                        background-color: rgb(225, 225, 225);
+                        &:hover {
+                            background-color: rgb(225, 225, 225);
+                        }
+                    }
+                }
+            }
+        }
+        &.lg {
+            @include breakpoint-down(small) {
+                display: none;
+            }
+        }
+        @include breakpoint-down(small) {
+            width: 100%;
+            font-weight: bold;
+            margin: 10px 0px;
+        }
         &:before {
             content: '';
             position: absolute;
@@ -38,6 +94,9 @@
         &:hover {
             &:before {
                 width: 100%;
+                @include breakpoint-down(small) {
+                    width: 97%;
+                }
             }
         }
         &-menu {
@@ -53,6 +112,9 @@
             padding: 20px;
             margin: 0px;
             transition: all 1s ease-in-out;
+            @include breakpoint-down(small) {
+                display: none;
+            }
             li {
                 cursor: pointer;
                 margin: 10px 0px;
@@ -71,17 +133,48 @@
     &__title {
         margin-left: 100%;
         font-size: $font-nav;
+        @include breakpoint-down(medium-sm) {
+            margin-left: 80%;
+            font-size: 30px;
+        }
+        @include breakpoint-down(small) {
+            display: none;
+        }
     }
     &__menu {
         margin: 0px;
         padding: 0px;
         min-width: 35%;
         @include createFlex(row, flex-end, center, null);
+        @include breakpoint-down(small) {
+            min-width: 100%;
+        }
         &-item {
             margin-left: 20px;
             @include createFlex(row, flex-start, center, null);
+            @include breakpoint-down(medium-sm) {
+                margin-left: 15px;
+            }
+            @include breakpoint-down(small) {
+                &:nth-of-type(1) {
+                    display: none;
+                }
+                &:nth-of-type(2) {
+                    display: none;
+                }
+            }
             svg {
+                position: relative;
+                top: 0px;
+                left: 0px;
                 margin-right: 10px;
+                @include breakpoint-down(medium-sm) {
+                    margin-right: 5px;
+                }
+                @include breakpoint-down(small) {
+                    margin-right: 5px;
+                    font-size: 25px;
+                }
             }
         }
     }

@@ -56,11 +56,11 @@ const Slider:React.FC<SliderProps> = ({items}) => {
             {items.map((item:ProductModel)=>{
                 const { id, image, title, price, category,description,rating } = item
                 return (
-                    <Product disabled product={item} />
+                    <Product key={id} disabled product={item} />
                     )}
             )}
             {items.map((item:ProductModel)=>{
-                return <div className="slider__dot"></div>
+                return <div  key ={item.id} className="slider__dot"></div>
             })}
             </div>
         </div>

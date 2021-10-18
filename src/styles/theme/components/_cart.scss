@@ -91,6 +91,9 @@
         border: 0px;
         outline: none;
         @include createFlex(row, center, center, null);
+        @include breakpoint-down(small) {
+            padding: 10px 20px;
+        }
         &:hover {
             opacity: 0.8;
         }

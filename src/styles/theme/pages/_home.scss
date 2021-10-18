@@ -9,15 +9,32 @@
         min-width: 55%;
         padding: 0px $p-lg;
         @include createFlex(row, space-between, center, null);
+        @include breakpoint-down(medium) {
+            padding: 0px $p-med;
+        }
+        @include breakpoint-down(small) {
+            padding: 0px $p-sm;
+            @include createFlex(row, space-between, center, wrap);
+        }
         img {
             width: 100%;
-            animation: scale 28s ease-in-out infinite;
         }
+    }
+    &__feature-main-image {
+        animation: scale 28s ease-in-out infinite;
     }
     &__image-group {
         margin-left: 20px;
         width: 39.5%;
         @include createFlex(column, center, center, null);
+        @include breakpoint-down(medium) {
+            width: 49%;
+        }
+        @include breakpoint-down(small) {
+            width: 100%;
+            margin-left: 0px;
+            @include createFlex(row, space-between, center, null);
+        }
         img {
             width: 100%;
         }
@@ -29,6 +46,22 @@
         position: relative;
         top: 0px;
         left: 0px;
+        &:nth-of-type(1) {
+            img {
+                width: 105%;
+            }
+        }
+        &:nth-of-type(2) {
+            img {
+                width: 93%;
+                margin-left: 6px;
+            }
+        }
+        &:nth-of-type(3) {
+            img {
+                width: 98%;
+            }
+        }
         &:first-of-type {
             .button {
                 left: 0px;
@@ -36,7 +69,7 @@
         }
         &:hover {
             button {
-                left: 0px;
+                left: -3px;
             }
         }
         @include btn();
@@ -45,16 +78,31 @@
             bottom: 70px;
             left: -250px;
             transition: all 0.5s ease-in-out;
+            @include breakpoint-down(medium) {
+                font-size: 12px;
+                bottom: 55px;
+            }
             &:last-of-type {
                 bottom: 20px;
                 transition: all 0.7s ease-in-out;
+                @include breakpoint-down(medium) {
+                    font-size: 12px;
+                    bottom: 15px;
+                }
+                @include breakpoint-down(small) {
+                    left: 0px;
+                    font-size: pxToRem(10);
+                }
             }
         }
     }
     &__article {
         padding: 100px $p-lg;
         &-inner {
-            @include createFlex(row, center, center, wrap);
+            @include createFlex(row, center, center, null);
+            @include breakpoint-down(medium-sm) {
+                @include createFlex(row, center, center, wrap);
+            }
         }
     }
     &__article-images {
@@ -62,6 +110,10 @@
         position: relative;
         top: 0px;
         left: 0px;
+        @include breakpoint-down(medium-sm) {
+            left: -30px;
+            max-width: 90%;
+        }
         img {
             width: 95%;
             position: relative;
@@ -70,12 +122,23 @@
     &__article-text {
         margin-left: 100px;
         max-width: 45%;
+        @include breakpoint-down(medium-sm) {
+            max-width: 100%;
+            margin-left: 0px;
+        }
         h2 {
             font-size: pxToRem(40);
+            @include breakpoint-down(small) {
+                font-size: pxToRem(30);
+                margin-left: 100px;
+            }
         }
         p {
             width: 80%;
             text-align: justify;
+            @include breakpoint-down(medium-sm) {
+                width: 100%;
+            }
         }
     }
 }

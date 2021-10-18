@@ -1,6 +1,16 @@
 .product {
     margin: $m-med-sm;
     width: calc(20% - 20px);
+    @include breakpoint-down(medium-sm) {
+        width: calc(30% - 20px)
+    }
+    @include breakpoint-down(small) {
+        width: calc(40% - 40px);
+        margin: 0px 20px !important;
+        img {
+            width: 70% !important;
+        }
+    }
     &__image {
         height: 200px;
         width: 200px;
@@ -17,6 +27,9 @@
     }
     &__footer {
         @include createFlex(row, space-between, center, null);
+        @include breakpoint-down(medium-sm) {
+            @include createFlex(row, center, center, wrap);
+        }
     }
     &__price {
         cursor: pointer;
@@ -30,6 +43,9 @@
         top: 0px;
         left: 0px;
         transition: background 500ms ease;
+        @include breakpoint-down(medium-sm) {
+            width: 100%;
+        }
         &:hover {
             background-color: $black;
             &:after {
@@ -79,6 +95,12 @@
         padding: $p-xs $p-sm;
         margin: $m-zero $m-xs;
         border-radius: 25px;
+        @include breakpoint-down(medium-sm) {
+            width: 30%;
+        }
+        @include breakpoint-down(small) {
+            display: none;
+        }
         &.yellow {
             background-color: yellow;
             color: $black;

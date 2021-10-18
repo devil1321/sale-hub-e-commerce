@@ -19,7 +19,7 @@ import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <Switch>
         <RouteWithLayout exact path="/" component={Home} />
         <RouteWithLayout exact path="/all" component={All} />

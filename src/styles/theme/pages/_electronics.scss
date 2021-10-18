@@ -9,8 +9,38 @@
             width: 120%;
         }
     }
+    .carousel__slide-1 {
+        img {
+            @include breakpoint-down(small) {
+                width: 150%;
+            }
+        }
+    }
+    .carousel__slide-1-text {
+        @include breakpoint-down(small) {
+            bottom: 50px !important;
+        }
+    }
     .carousel__slide-2-text {
-        bottom: 220px !important;
+        bottom: 30px !important;
+        h2,
+        h3,
+        h6,
+        p {
+            color: black;
+            @include breakpoint-down(medium) {
+                color: white;
+            }
+        }
+        @include breakpoint-down(small) {
+            bottom: 20px !important;
+        }
+    }
+    .carousel__slide-3-text {
+        bottom: 120px !important;
+        @include breakpoint-down(small) {
+            bottom: 40px !important;
+        }
         h2,
         h3,
         h6,
@@ -18,13 +48,9 @@
             color: black;
         }
     }
-    .carousel__slide-3-text {
-        bottom: 400px !important;
-        h2,
-        h3,
-        h6,
-        p {
-            color: black;
+    .carousel {
+        button {
+            padding: 10px 15px;
         }
     }
 }

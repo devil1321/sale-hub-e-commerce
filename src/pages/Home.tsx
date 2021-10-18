@@ -22,13 +22,27 @@ const Homepage = () => {
     ])
     const animateBlog = () =>{
         gsap.registerPlugin(ScrollTrigger);
+        let start:string ='0-'
+        let end:string = '0'
+        if(window.innerWidth  > 1024 && window.innerHeight < 1366){
+            start = '-=150px'
+            end = '+= 50px'           
+        }
+        else if(window.innerWidth === 1024 && window.innerHeight === 1366){
+            start = '-=650px'
+            end = '-=550px'            
+        }
+        else if(window.innerWidth === 768 && window.innerHeight === 1024){
+            start = '-=550px'
+            end = '-=350px'            
+        }
         gsap.fromTo('.slide-1',
                 { top:'-100px', left:'-500px', opacity:0 },
                 { top:'100px', left:'20px', opacity:1, force3D:true,
                 scrollTrigger: {
                     trigger: '#article',
-                    start:'-150px',
-                    end:'+=50px',
+                    start:start,
+                    end:end    ,
                     scrub:6,
                     onLeaveBack: self => self.disable()
                 }})
@@ -39,8 +53,8 @@ const Homepage = () => {
                 scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-150px',
-                end:'+=50px',
+                start:start,
+                end:end,
                 onLeaveBack: self => self.disable()
 
             }})
@@ -50,8 +64,8 @@ const Homepage = () => {
             scrollTrigger: {
             trigger: '#article',
             scrub:6,
-            start:'-150px',
-            end:'+=50px',
+            start:start,
+            end:end,
             onLeaveBack: self => self.disable()
 
         }})
@@ -59,8 +73,8 @@ const Homepage = () => {
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-150px',
-                end:'+=50px',
+                start:start,
+                end:start,
                 onLeaveBack: self => self.disable()
 
         }})
@@ -69,8 +83,8 @@ const Homepage = () => {
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-150px',
-                end:'+=50px',
+                start:start,
+                end:end,
                 onLeaveBack: self => self.disable()
 
         }})
@@ -79,8 +93,8 @@ const Homepage = () => {
             scrollTrigger: {
                 trigger: '#article',
                 scrub:6,
-                start:'-150px',
-                end:'+=50px',
+                start:start,
+                end:end,
                 onLeaveBack: self => self.disable()
 
         }})
@@ -102,7 +116,7 @@ const Homepage = () => {
                 <div className="home__feature">
                 <div className="home__image">
                     <Link to='/category/women`s Clothing'>
-                        <img src='/women-2.jpg' alt="" />
+                        <img src='/women-2.jpg' alt="" className="home__feature-main-image"/>
                     </Link>
                     <button className="button">Explore Collection</button>
                     <button className="button">Women`s</button>

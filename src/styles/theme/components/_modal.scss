@@ -58,6 +58,16 @@
         margin-top: 50px;
         height: 70vh;
         background-color: white;
+        @include createFlex(column, space-between, space-between, null);
+        @include breakpoint-down(small) {
+            top: 20%;
+            height: 50vh;
+            padding: $p-sm 0px;
+            width: 90vw;
+            img {
+                height: 50% !important;
+            }
+        }
         img {
             display: block;
             margin: 0px auto;

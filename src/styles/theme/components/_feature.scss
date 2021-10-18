@@ -1,6 +1,9 @@
 .feature {
     margin: 100px 0px;
     @include createFlex(row, center, flex-start, null);
+    @include breakpoint-down(medium) {
+        display: none;
+    }
     &__images {
         margin: 0px 50px;
         width: 18.5%;

@@ -3,12 +3,18 @@
         margin: 0px;
     }
     .carousel__slide-1-text {
-        bottom: 350px !important;
+        bottom: 150px !important;
         h2,
         h3,
         h6,
         p {
             color: black;
         }
+    }
+    .carousel__slide-2-text {
+        bottom: 150px !important;
+    }
+    .carousel__slide-3-text {
+        bottom: 150px !important;
     }
 }

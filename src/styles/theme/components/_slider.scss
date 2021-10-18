@@ -6,9 +6,16 @@
         @include createFlex(row, center, center, null);
         margin-left: 120px;
         transition: all 1s ease-in-out;
+        @include breakpoint-down(small) {
+            margin-left: 0px;
+            margin-right: 220px;
+        }
     }
     .product {
         min-width: calc(30% - 20px) !important;
+        @include breakpoint-down(small) {
+            min-width: calc(100% - 20px) !important;
+        }
     }
     &__next,
     &__prev {
@@ -27,6 +34,7 @@
         }
         svg {
             font-size: pxToRem(35);
+            color: rgb(68, 68, 68);
             transition: all 500ms ease-in-out;
         }
     }

@@ -15,11 +15,19 @@
         padding: $m-zero;
     }
     &__field {
+        @include breakpoint-down(small) {
+            margin-top: 120px;
+            position: relative;
+            top: -100px;
+        }
         input {
             width: 300px;
             height: 40px;
             border: 1px solid black;
             border-right: 0px;
+            @include breakpoint-down(small) {
+                width: 200px;
+            }
         }
     }
     &__btn {
@@ -29,7 +37,16 @@
         border: 0px;
         outline: 0px;
         width: 100px;
-        height: 46px;
+        height: 44px;
+        position: relative;
+        top: -1px;
+        left: 0px;
+        @include breakpoint-down(medium) {
+            top: 0px;
+        }
+        @include breakpoint-down(small) {
+            top: -1px;
+        }
         &:active {
             border: 0px;
             outline: 0px;
