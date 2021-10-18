@@ -34,6 +34,9 @@
         img {
             margin-right: 15px;
             height: 80%;
+            @include breakpoint-down(small) {
+                height: 20%;
+            }
         }
         span {
             font-weight: bold
@@ -44,8 +47,16 @@
             width: 40px;
         }
     }
+    &__size {
+        @include breakpoint-down(small) {
+            display: none;
+        }
+    }
     &__color-field {
         @include createFlex(row, flex-start, center, null);
+        @include breakpoint-down(small) {
+            display: none;
+        }
     }
     &__quantity {
         @include createFlex(row, flex-start, center, null);
@@ -54,6 +65,10 @@
             max-width: 150px;
             border-left: 0px;
             border-right: 0px;
+            @include breakpoint-down(small) {
+                min-width: 80px;
+                max-width: 80px;
+            }
         }
         div {
             min-width: 50px;

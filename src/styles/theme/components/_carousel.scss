@@ -1,11 +1,11 @@
 .carousel {
     overflow: hidden;
-    height: 90vh;
     margin-bottom: 100px;
+    height: 90vh;
     @include breakpoint-down(medium) {
         height: 37vh;
     }
-    @media(max-device-width:1366px) and (max-device-height:1024px) and (orientation:landscape) {
+    @media(max-device-width:1366px) and (min-device-height:1024px) and (orientation:landscape) {
         height: 68vh;
     }
     &__slide-1,

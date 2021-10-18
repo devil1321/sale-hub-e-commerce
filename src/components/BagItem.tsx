@@ -22,7 +22,7 @@ const BagItem:React.FC<BagProps> = ({product}) => {
           <div className="bag__text">
               <h3>{title}</h3>
               <p><span>Price:</span> {price}$</p>
-              <p><span>Size:</span> {size}</p>
+              <p className="bag__size"><span>Size:</span> {size}</p>
               <p className="bag__color-field"><span>Color:</span> <div className="bag__item-color" style={{backgroundColor:color}}></div></p>
               <div className="details__colour">
                     <div className="details__colour-red" id="red" onClick={(e:any)=>{
